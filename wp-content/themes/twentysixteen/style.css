@@ -1058,7 +1058,7 @@ html[xmlns] .slides {
 
 }
 .i-zjlt li {
-	padding-bottom: 20px; margin-bottom: 20px; border-bottom-color: rgb(204, 204, 204); border-bottom-width: 1px; border-bottom-style: dotted; position: relative; min-height: 85px;
+	padding-bottom: 10px; margin-bottom: 10px; border-bottom-color: rgb(204, 204, 204); border-bottom-width: 1px; border-bottom-style: dotted; position: relative; min-height: 40px;
 }
 .i-zjlt li .tx {
 	left: 0px; top: 0px; width: 70px; height: 82px; position: absolute;

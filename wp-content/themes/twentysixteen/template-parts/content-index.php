@@ -80,14 +80,16 @@ $total_items = count($center_items);
                                 $post_image = get_the_post_thumbnail_url($post['ID'], 'large');
                                 ?>
                             <li class="clearfix">
-                                <div class="tx fl">
-                                    <a href="<?php echo $post['guid']?>">
-                                        <img width="70" height="82" src="<?php echo $post_image?>"></a>
-                                </div>
-                                <div class="info fr">
+                                <!--<div class="tx fl">
+                                    <a href="<?php /*echo $post['guid']*/?>">
+                                        <img width="70" height="82" src="<?php /*echo $post_image*/?>"></a>
+                                </div>-->
+                                <!--<div class="info ">-->
                                     <P class="tit">
-                                        <a href="<?php echo $post['guid']?>"><?php echo str_replace(' ', '<br/>', $post['post_title'])?></a></P>
-                                    <P class="time"><?php echo substr($post['post_date'], 0, 10)?></P></div>
+                                        <a href="<?php echo $post['guid']?>"><?php echo $post['post_title']?></a></P>
+                                    <P class="time"><?php echo substr($post['post_date'], 0, 10)?></P>
+                                <!--</div>-->
+
                             </li>
                             <?php }?>
 
@@ -115,8 +117,8 @@ $total_items = count($center_items);
     <div class="index-box" style="margin-top:-40px;">
         <div class="i-xsgz  mt-45">
             <h2 class="bt">
-                <a href="http://www.tsinghua.edu.cn/publish/ess/8911/index.html">MORE &gt;</a>
-                <span>学生工作</span></h2>
+                <a href="<?php echo $item->url;?>">MORE &gt;</a>
+                <span><?php echo $item->title;?></span></h2>
             <div class="box-con clearfix">
                 <div class="sxgz-l fl">
                     <a class="tj" href="<?php echo $first_post['guid']?>">
