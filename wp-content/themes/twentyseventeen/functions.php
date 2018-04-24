@@ -409,6 +409,7 @@ add_action( 'wp_head', 'twentyseventeen_colors_css_wrap' );
  * Enqueue scripts and styles.
  */
 function twentyseventeen_scripts() {
+
 	// Add custom fonts, used in the main stylesheet.
 	wp_enqueue_style( 'twentyseventeen-fonts', twentyseventeen_fonts_url(), array(), null );
 
@@ -584,3 +585,4 @@ require get_parent_theme_file_path( '/inc/customizer.php' );
  * SVG icons functions and filters.
  */
 require get_parent_theme_file_path( '/inc/icon-functions.php' );
+remove_action('wp_head', 'index_rel_link');//当前文章的索引

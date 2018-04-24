@@ -9,7 +9,7 @@ if ( has_nav_menu( 'index' ) ) {
 $total_items = count($center_items);
 
 ?>
-<div class="index-bg">
+
     <div class="index-box clearfix">
         <div class="index-box-l fl">
             <?php foreach ($center_items as $key => $item) {
@@ -143,5 +143,3 @@ $total_items = count($center_items);
         </div>
     </div>
     <?php }?>
-</div>
-<!--底部 begin-->

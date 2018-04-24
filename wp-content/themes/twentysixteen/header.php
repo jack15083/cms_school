@@ -10,7 +10,7 @@
  */
 show_admin_bar( false );
 ?><!DOCTYPE html>
-<html <?php language_attributes(); ?> class="no-js">
+<html <?php language_attributes(); ?> style="">
 <head>
 	<meta charset="<?php bloginfo( 'charset' ); ?>">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -18,7 +18,8 @@ show_admin_bar( false );
 	<?php if ( is_singular() && pings_open( get_queried_object() ) ) : ?>
 	<link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>">
 	<?php endif; ?>
-	<?php wp_head(); ?>
+
+	<?php //wp_head(); ?>
     <script type="text/javascript" src="<?php echo get_stylesheet_directory_uri()?>/js/jquery.flexslider-min.js"></script>
     <script>
         var $ = jQuery.noConflict();
@@ -144,6 +145,7 @@ show_admin_bar( false );
 </div>
 <!--头部 end-->
 <?php
+ if($post_id == 0) {
  $content = do_shortcode("[huge_it_slider id='1']");
  preg_match_all('/<a href\="(.*?)" target="_blank">\s+<img\s+id\="huge.*?src\="(.*?)"\s+alt\="(.*?)"\s+.*?\/>/is', $content, $matches);
 
@@ -164,3 +166,17 @@ show_admin_bar( false );
     </ul>
 </div>
 <!-- 轮播 结束 -->
+<?php } else {
+$content = do_shortcode("[huge_it_slider id='2']");
+preg_match_all('/<a href\="(.*?)" target="_blank">\s+<img\s+id\="huge.*?src\="(.*?)"\s+alt\="(.*?)"\s+.*?\/>/is', $content, $matches);
+preg_match_all('/<div class="huge_it_slideshow_description_text_\d\s+".*?>(.*?)<\/div>/is', $content, $matches1);
+     ?>
+<div class="banner" style=" background-image:url(<?php echo $matches[2][0]?>);">
+    <div class="banner-box">
+        <div class="con">
+            <h4><?php echo $matches[3][0]?></h4>
+            <p class="clearfix"><?php echo $matches1[1][0]?></p>
+        </div>
+    </div>
+</div>
+<?php }

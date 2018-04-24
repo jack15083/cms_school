@@ -27,6 +27,23 @@ input[type='button'] {
 }
 input[type='submit'] {
 	-webkit-border-radius: 0; -webkit-appearance: none;
+    line-height: 24px;
+    padding-left: 10px;
+    padding-right: 10px;
+    display: inline-block;
+    white-space: nowrap;
+    cursor: pointer;
+    text-align: center;
+    box-sizing: border-box;
+    user-select: none;
+    font-size: 12px;
+    background: rgb(255, 255, 255);
+    border-width: 1px;
+    border-style: solid;
+    border-image: initial;
+    border-color: rgb(196, 196, 196);
+    outline: none;
+    border-radius: 4px;;
 }
 input[type='reset'] {
 	-webkit-border-radius: 0; -webkit-appearance: none;
@@ -319,6 +336,9 @@ ul.list-ej li span.data {
 }
 .gride {
 	background: rgb(255, 255, 255); margin: auto; padding: 23px; width: 1200px;
+}
+.comment-respond {
+
 }
 .gride-l {
 	width: 250px;
@@ -1414,3 +1434,47 @@ html[xmlns] .slides {display: block;}
 	.show_text h4{ line-height:35px;}
 	.show_text h4 a{font-size:20px; color:#fff; }
 }
+
+.page-header {
+	padding-bottom: 2em;
+}
+.page-title {
+	font-size: 18px;
+}
+
+.site-main > article {
+	padding-bottom: 3em;
+}
+
+.entry-header .entry-title {
+	margin-bottom: 0.25em;
+}
+
+.entry-title a {
+	color: #333;
+	text-decoration: none;
+	margin-left: -2px;
+}
+
+.entry-title:not(:first-child) {
+	padding-top: 0;
+}
+
+.entry-title a {
+	font-size: 15px;
+	font-weight: bold;
+	line-height: 30px;
+}
+.comments-area {
+    margin-top:40px;
+    margin-bottom:40px;
+}
+.screen-reader-text {
+    line-height: 30px;
+}
+p {
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+

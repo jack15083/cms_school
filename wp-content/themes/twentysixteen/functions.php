@@ -270,7 +270,7 @@ function twentysixteen_scripts() {
 	wp_enqueue_script( 'twentysixteen-html5', get_template_directory_uri() . '/js/html5.js', array(), '3.7.3' );
 	wp_script_add_data( 'twentysixteen-html5', 'conditional', 'lt IE 9' );
 
-	wp_enqueue_script( 'twentysixteen-skip-link-focus-fix', get_template_directory_uri() . '/js/skip-link-focus-fix.js', array(), '20160816', true );
+	//wp_enqueue_script( 'twentysixteen-skip-link-focus-fix', get_template_directory_uri() . '/js/skip-link-focus-fix.js', array(), '20160816', true );
 
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 		wp_enqueue_script( 'comment-reply' );
@@ -280,7 +280,7 @@ function twentysixteen_scripts() {
 		wp_enqueue_script( 'twentysixteen-keyboard-image-navigation', get_template_directory_uri() . '/js/keyboard-image-navigation.js', array( 'jquery' ), '20160816' );
 	}
 
-	wp_enqueue_script( 'twentysixteen-script', get_template_directory_uri() . '/js/functions.js', array( 'jquery' ), '20160816', true );
+	//wp_enqueue_script( 'twentysixteen-script', get_template_directory_uri() . '/js/functions.js', array( 'jquery' ), '20160816', true );
 
 	wp_localize_script( 'twentysixteen-script', 'screenReaderText', array(
 		'expand'   => __( 'expand child menu', 'twentysixteen' ),
@@ -434,3 +434,92 @@ function twentysixteen_widget_tag_cloud_args( $args ) {
 	return $args;
 }
 add_filter( 'widget_tag_cloud_args', 'twentysixteen_widget_tag_cloud_args' );
+
+function get_breadcrumbs()
+{
+    global $wp_query;
+
+    $bre_str = '';
+    if ( !is_home() ){
+        $bre_str.= '<div class="mbx"><a href="">&nbsp;</a>';
+        $bre_str.= '<a href="'. esc_url( home_url( '/' ) ) .'">网站首页</a> &gt;';
+
+        if ( is_category() )
+        {
+            $catTitle = single_cat_title( "", false );
+            $cat = get_cat_ID( $catTitle );
+            $bre_str.= get_category_parents( $cat, TRUE, " &gt; " );
+        }
+        elseif ( is_archive() && !is_category() )
+        {
+            $bre_str.= "<a>  Archives</a> &gt;";
+        }
+        elseif ( is_search() ) {
+
+            $bre_str.= "<a>  Search Results</a> &gt;";
+        }
+        elseif ( is_404() )
+        {
+            $bre_str.= "<a> 404 Not Found</a>&gt;";
+        }
+        elseif ( is_single() )
+        {
+            $category = get_the_category();
+            $category_id = get_cat_ID( $category[0]->cat_name );
+
+            $bre_str .=  get_category_parents( $category_id, TRUE, " &gt; " );
+            //echo the_title('','', FALSE) ." &gt;";
+        }
+        elseif ( is_page() )
+        {
+            $post = $wp_query->get_queried_object();
+
+            if ( $post->post_parent == 0 ){
+                $bre_str .= the_title('','', FALSE) . " &gt;";
+
+            } else {
+                $ancestors = array_reverse( get_post_ancestors( $post->ID ) );
+                array_push($ancestors, $post->ID);
+
+                foreach ( $ancestors as $ancestor ){
+                    if( $ancestor != end($ancestors) ){
+                        $bre_str .= '<a href="'. get_permalink($ancestor) .'">'. strip_tags( apply_filters( 'single_post_title', get_the_title( $ancestor ) ) ) .'</a> &gt;';
+                    } else {
+                        $bre_str .= strip_tags( apply_filters( 'single_post_title', get_the_title( $ancestor ) ) ) .' &gt;';
+                    }
+                }
+            }
+        }
+
+        $bre_str .= "</div>";
+    }
+
+    echo preg_replace('/(\&gt;\s?<\/div>)$/', '</div>', $bre_str);
+}
+
+function get_left_menu() {
+    if(is_single()) {
+        $category = get_the_category();
+        $cur_cat_id = $category[0]->cat_ID;
+        $parent = array_pop($category);
+        $html = '<!--左侧开始-->
+    <div class="gride-l fl">
+        <h2 class="ebt"><span>' . $parent->cat_name. '</span></h2>
+        <ul class="left-dh">';
+            //<li><a href="/publish/ess/7683/index.html" class="act">关于我们</a></li>
+        //</ul>
+    //</div><!--左侧结束-->';
+
+        foreach ($category as $cat) {
+            $act = '';
+            if($cur_cat_id == $cat->cat_ID) {
+                $act = 'act';
+            }
+            $html .= '<li><a href="' . get_category_link($cat) . '" class="' . $act . '">' . $cat->cat_name . '</a></li>';
+        }
+
+        $html .= '</ul></div>';
+
+        echo $html;
+    }
+}
