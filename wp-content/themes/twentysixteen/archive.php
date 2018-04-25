@@ -15,20 +15,13 @@
  * @subpackage Twenty_Sixteen
  * @since Twenty Sixteen 1.0
  */
+get_header();
+?>
 
-get_header(); ?>
-
-	<div id="primary" class="content-area">
-		<main id="main" class="site-main" role="main">
-
+    <div class="gride clearfix">
+        <?php get_left_menu();?>
+        <div class="gride-r fr">
 		<?php if ( have_posts() ) : ?>
-
-			<header class="page-header">
-				<?php
-					the_archive_title( '<h1 class="page-title">', '</h1>' );
-					the_archive_description( '<div class="taxonomy-description">', '</div>' );
-				?>
-			</header><!-- .page-header -->
 
 			<?php
 			// Start the Loop.
@@ -46,9 +39,9 @@ get_header(); ?>
 
 			// Previous/next page navigation.
 			the_posts_pagination( array(
-				'prev_text'          => __( 'Previous page', 'twentysixteen' ),
-				'next_text'          => __( 'Next page', 'twentysixteen' ),
-				'before_page_number' => '<span class="meta-nav screen-reader-text">' . __( 'Page', 'twentysixteen' ) . ' </span>',
+				'prev_text'          => __( '上一页', 'twentysixteen' ),
+				'next_text'          => __( '下一页', 'twentysixteen' ),
+				'before_page_number' => '<span class="meta-nav screen-reader-text">' . __( '页', 'twentysixteen' ) . ' </span>',
 			) );
 
 		// If no content, include the "No posts found" template.
@@ -57,9 +50,8 @@ get_header(); ?>
 
 		endif;
 		?>
+        </div>
+	</div>
 
-		</main><!-- .site-main -->
-	</div><!-- .content-area -->
-
-<?php get_sidebar(); ?>
+<?php //get_sidebar(); ?>
 <?php get_footer(); ?>

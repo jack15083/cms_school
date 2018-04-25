@@ -19,7 +19,7 @@ show_admin_bar( false );
 	<link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>">
 	<?php endif; ?>
 
-	<?php //wp_head(); ?>
+	<?php wp_head(); ?>
     <script type="text/javascript" src="<?php echo get_stylesheet_directory_uri()?>/js/jquery.flexslider-min.js"></script>
     <script>
         var $ = jQuery.noConflict();
@@ -86,48 +86,12 @@ show_admin_bar( false );
 
     <div class="header-box clearfix">
         <div class="logo fl">
-            <a href="<?php echo esc_url( home_url( '/' ) ); ?>">郑州大学国家实验室</a></div>
+            <a href="<?php echo esc_url( home_url( '/' ) ); ?>"><?php bloginfo( 'name' ); ?></a></div>
         <div class="nav fr">
             <ul class="navbox">
                 <?php
-                $menu_items = [];
-                preg_match('/(\d+)/', $_SERVER['QUERY_STRING'], $matches);
-                $post_id = isset($matches[1]) ? intval($matches[1]) : 0;
-                if ( has_nav_menu( 'primary' ) ) :
-                    $locations = get_nav_menu_locations();
-                    $menu      = wp_get_nav_menu_object( $locations['primary'] );
-                    $items     =  wp_get_nav_menu_items($menu);
 
-                    foreach ($items as $key => $item) {
-                        $item = (array) $item;
-                        if($item['menu_item_parent'] == 0) {
-                            $item['menu_act_class'] = '';
-                            if($post_id == 0 && $key == 0) {
-                                $item['menu_act_class'] = 'act';
-                            }
-                            if($post_id == $item['object_id']) {
-                                $item['menu_act_class'] = 'act';
-                            }
-                            $menu_items[$item['ID']] = $item;
-                        }
-                    }
-
-                    foreach ($menu_items as &$menu) {
-
-                        $menu['child'] = [];
-                        foreach ($items as $item) {
-                            $item = (array) $item;
-
-                            if($item['menu_item_parent'] == $menu['ID']) {
-                                if($post_id == $item['object_id']) {
-                                    $menu['menu_act_class'] = 'act';
-                                }
-                                $menu['child'][] = $item;
-                            }
-                        }
-                    }
-                endif;
-
+                    $menu_items = get_menu_items_by_location('primary');
                     foreach ($menu_items as $item) {?>
                 <li>
                     <a class="<?php echo $item['menu_act_class']?>" href="<?php echo $item['url']?>"><?php echo $item['title']?></a>
@@ -145,9 +109,10 @@ show_admin_bar( false );
 </div>
 <!--头部 end-->
 <?php
- if($post_id == 0) {
- $content = do_shortcode("[huge_it_slider id='1']");
- preg_match_all('/<a href\="(.*?)" target="_blank">\s+<img\s+id\="huge.*?src\="(.*?)"\s+alt\="(.*?)"\s+.*?\/>/is', $content, $matches);
+
+ if(is_home()) {
+     $content = do_shortcode("[huge_it_slider id='1']");
+     preg_match_all('/<a href\="(.*?)" target="_blank">\s+<img\s+id\="huge.*?src\="(.*?)"\s+alt\="(.*?)"\s+.*?\/>/is', $content, $matches);
 
  ?>
 <!-- 轮播 开始 -->

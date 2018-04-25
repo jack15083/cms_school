@@ -18,7 +18,7 @@ if ( ! function_exists( 'twentysixteen_entry_meta' ) ) :
  * @since Twenty Sixteen 1.0
  */
 function twentysixteen_entry_meta() {
-	/*if ( 'post' === get_post_type() ) {
+	if ( 'post' === get_post_type() ) {
 		$author_avatar_size = apply_filters( 'twentysixteen_author_avatar_size', 49 );
 		printf( '<span class="byline"><span class="screen-reader-text">%1$s </span> %2$s</span>',
 			//get_avatar( get_the_author_meta( 'user_email' ), $author_avatar_size ),
@@ -26,7 +26,7 @@ function twentysixteen_entry_meta() {
 			//esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ),
 			get_the_author()
 		);
-	}*/
+	}
 
 	/*if ( in_array( get_post_type(), array( 'post', 'attachment' ) ) ) {
 		twentysixteen_entry_date();

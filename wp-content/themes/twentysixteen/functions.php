@@ -497,29 +497,75 @@ function get_breadcrumbs()
     echo preg_replace('/(\&gt;\s?<\/div>)$/', '</div>', $bre_str);
 }
 
-function get_left_menu() {
-    if(is_single()) {
+function get_left_menu()
+{
+    if(is_single() || is_archive()) {
         $category = get_the_category();
         $cur_cat_id = $category[0]->cat_ID;
         $parent = array_pop($category);
         $html = '<!--左侧开始-->
     <div class="gride-l fl">
-        <h2 class="ebt"><span>' . $parent->cat_name. '</span></h2>
+        <h2 class="ebt"><span>' . $parent->cat_name . '</span></h2>
         <ul class="left-dh">';
-            //<li><a href="/publish/ess/7683/index.html" class="act">关于我们</a></li>
-        //</ul>
-    //</div><!--左侧结束-->';
 
         foreach ($category as $cat) {
             $act = '';
-            if($cur_cat_id == $cat->cat_ID) {
+            if ($cur_cat_id == $cat->cat_ID) {
                 $act = 'act';
             }
             $html .= '<li><a href="' . get_category_link($cat) . '" class="' . $act . '">' . $cat->cat_name . '</a></li>';
         }
 
         $html .= '</ul></div>';
-
-        echo $html;
     }
+
+    if(is_page()) {
+
+    }
+
+    echo $html;
+
+}
+
+function get_menu_items_by_location($location) {
+
+    $menu_items = [];
+    preg_match('/(\d+)/', $_SERVER['QUERY_STRING'], $matches);
+    $post_id = isset($matches[1]) ? intval($matches[1]) : 0;
+    if ( has_nav_menu( $location ) ) {
+        $locations = get_nav_menu_locations();
+        $menu = wp_get_nav_menu_object($locations[$location]);
+        $items = wp_get_nav_menu_items($menu);
+
+        foreach ($items as $key => $item) {
+            $item = (array)$item;
+            if ($item['menu_item_parent'] == 0) {
+                $item['menu_act_class'] = '';
+                if ($post_id == 0 && $key == 0) {
+                    $item['menu_act_class'] = 'act';
+                }
+                if ($post_id == $item['object_id']) {
+                    $item['menu_act_class'] = 'act';
+                }
+                $menu_items[$item['ID']] = $item;
+            }
+        }
+
+        foreach ($menu_items as &$menu) {
+
+            $menu['child'] = [];
+            foreach ($items as $item) {
+                $item = (array)$item;
+
+                if ($item['menu_item_parent'] == $menu['ID']) {
+                    if ($post_id == $item['object_id']) {
+                        $menu['menu_act_class'] = 'act';
+                    }
+                    $menu['child'][] = $item;
+                }
+            }
+        }
+    }
+
+    return $menu_items;
 }

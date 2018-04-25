@@ -1,7 +1,7 @@
 <?php
 
 /*
-Plugin Name: Huge IT Slider
+Plugin Name: 轮播图
 Plugin URI: http://huge-it.com/slider
 Description: Huge IT slider is a convenient tool for organizing the images represented on your website into sliders. Each product on the slider is assigned with a relevant slider, which makes it easier for the customers to search and identify the needed images within the slider.
 Version: 2.9.8
@@ -17,7 +17,7 @@ function add_my_custom_button($context) {
   $img = plugins_url( '/images/post.button.png' , __FILE__ );
   $container_id = 'huge_it_slider';
 
-  $title = 'Select Huge IT Slider to insert into post';
+  $title = '选择轮播图插入到文章';
 
   $context .= '<a class="button thickbox" title="Select slider to insert into post"    href="?page=sliders_huge_it_slider&task=add_shortcode_post&TB_iframe=1&width=400&inlineId='.$container_id.'">
 		<span class="wp-media-buttons-icon" style="background: url('.$img.'); background-repeat: no-repeat; background-position: left bottom;"></span>
