@@ -28,10 +28,10 @@ get_left_menu();
         } elseif ( is_singular( 'post' ) ) {
             // Previous/next post navigation.
             the_post_navigation( array(
-                'next_text' => '<span class="meta-nav" aria-hidden="true">' . __( 'Next', 'twentysixteen' ) . '</span> ' .
+                'next_text' => '<span class="meta-nav" aria-hidden="true">' . __( '下一篇', 'twentysixteen' ) . '</span> ' .
                     '<span class="screen-reader-text">' . __( 'Next post:', 'twentysixteen' ) . '</span> ' .
                     '<span class="post-title">%title</span>',
-                'prev_text' => '<span class="meta-nav" aria-hidden="true">' . __( 'Previous', 'twentysixteen' ) . '</span> ' .
+                'prev_text' => '<span class="meta-nav" aria-hidden="true">' . __( '上一篇', 'twentysixteen' ) . '</span> ' .
                     '<span class="screen-reader-text">' . __( 'Previous post:', 'twentysixteen' ) . '</span> ' .
                     '<span class="post-title">%title</span>',
             ) );

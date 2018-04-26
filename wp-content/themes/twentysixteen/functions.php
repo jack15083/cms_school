@@ -499,7 +499,8 @@ function get_breadcrumbs()
 
 function get_left_menu()
 {
-    if(is_single() || is_archive()) {
+    global $wp_query;
+    if(is_single()) {
         $category = get_the_category();
         $cur_cat_id = $category[0]->cat_ID;
         $parent = array_pop($category);
@@ -518,8 +519,22 @@ function get_left_menu()
 
         $html .= '</ul></div>';
     }
+    elseif (!empty($wp_query->query['current_menu'])) {
+        $object_id = get_queried_object_id();
+        $html = '<!--左侧开始-->
+    <div class="gride-l fl">
+        <h2 class="ebt"><span>' . $wp_query->query['current_menu']['title'] . '</span></h2>
+        <ul class="left-dh">';
+        foreach ($wp_query->query['current_menu']['child'] as $cat) {
+            $act = '';
+            if ($object_id == $cat['object_id']) {
+                $act = 'act';
+            }
+            $html .= '<li><a href="' . $cat['url'] . '" class="' . $act . '">' . $cat['title'] . '</a></li>';
+        }
 
-    if(is_page()) {
+        $html .= '</ul></div>';
+    } else {
 
     }
 
@@ -528,10 +543,10 @@ function get_left_menu()
 }
 
 function get_menu_items_by_location($location) {
-
+    global $wp_query;
     $menu_items = [];
-    preg_match('/(\d+)/', $_SERVER['QUERY_STRING'], $matches);
-    $post_id = isset($matches[1]) ? intval($matches[1]) : 0;
+    $post_id = get_queried_object_id();
+
     if ( has_nav_menu( $location ) ) {
         $locations = get_nav_menu_locations();
         $menu = wp_get_nav_menu_object($locations[$location]);
@@ -556,7 +571,7 @@ function get_menu_items_by_location($location) {
             $menu['child'] = [];
             foreach ($items as $item) {
                 $item = (array)$item;
-
+                //如果菜单的父id 等于当前菜单
                 if ($item['menu_item_parent'] == $menu['ID']) {
                     if ($post_id == $item['object_id']) {
                         $menu['menu_act_class'] = 'act';
@@ -564,6 +579,12 @@ function get_menu_items_by_location($location) {
                     $menu['child'][] = $item;
                 }
             }
+        }
+    }
+
+    foreach ($menu_items as $item) {
+        if($item['menu_act_class'] === 'act') {
+            $wp_query->query['current_menu'] = $item;
         }
     }
 

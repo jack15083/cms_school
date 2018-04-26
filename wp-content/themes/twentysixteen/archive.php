@@ -21,6 +21,8 @@ get_header();
     <div class="gride clearfix">
         <?php get_left_menu();?>
         <div class="gride-r fr">
+        <?php get_breadcrumbs()?>
+            <h1 class="ej-bigtit"><?php echo str_replace('分类：', '', get_the_archive_title())?></h1>
 		<?php if ( have_posts() ) : ?>
 
 			<?php
@@ -41,7 +43,7 @@ get_header();
 			the_posts_pagination( array(
 				'prev_text'          => __( '上一页', 'twentysixteen' ),
 				'next_text'          => __( '下一页', 'twentysixteen' ),
-				'before_page_number' => '<span class="meta-nav screen-reader-text">' . __( '页', 'twentysixteen' ) . ' </span>',
+				'before_page_number' => '<span class="meta-nav screen-reader-text">' . __( '', 'twentysixteen' ) . ' </span>',
 			) );
 
 		// If no content, include the "No posts found" template.
