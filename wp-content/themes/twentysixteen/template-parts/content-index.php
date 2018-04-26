@@ -13,46 +13,60 @@ $total_items = count($center_items);
     <div class="index-box clearfix">
         <div class="index-box-l fl">
             <?php foreach ($center_items as $key => $item) {
-                if($item->object != 'category') {
-                    continue;
-                }
 
                 if(($key + 1) % 2 == 1 && ($key+1) != $total_items) {
-                    $posts = wp_get_recent_posts(['category' => $item->object_id, 'numberposts' => 9]);
-                    $first_post = array_shift($posts);
-                    //print_r($first_post);die();
-                    $first_post_image = get_the_post_thumbnail_url($first_post['ID'], 'large');
-                    ?>
-                    <!--新闻begin-->
+                    if ($item->object == 'category') {
+                        $posts = wp_get_recent_posts(['category' => $item->object_id, 'numberposts' => 9]);
+                        $first_post = array_shift($posts);
+                        //print_r($first_post);die();
+                        $first_post_image = get_the_post_thumbnail_url($first_post['ID'], 'large');
+                        ?>
+                        <!--新闻begin-->
+                        <div class="box newbox">
+                            <h2 class="bt">
+                                <a href="<?php echo $item->url; ?>">MORE &gt;</a>
+                                <span><?php echo $item->title; ?></span></h2>
+                            <div class="box-con">
+                                <div class="first-new clearfix">
+                                    <div class="first-new-l fl">
+                                        <a href="<?php echo $first_post['guid'] ?>">
+                                            <img src="<?php echo $first_post_image ?>"></a>
+                                    </div>
+                                    <div class="first-new-r fr">
+                                        <h3>
+                                            <a href="<?php echo $first_post['guid'] ?>"><?php echo $first_post['post_title'] ?></a>
+                                        </h3>
+                                        <P><?php echo mb_substr(strip_tags($first_post['post_content']), 0, 80) ?>
+                                            ...</P>
+                                        <P class="more-box">
+                                            <a class="more" href="<?php echo $first_post['guid'] ?>">更多</a></P>
+                                    </div>
+                                </div>
+                                <ul class="list-50 mt-10">
+                                    <?php foreach ($posts as $post) { ?>
+                                        <li>
+                                            <span class="data"><?php echo substr($post['post_date'], 0, 10) ?></span>
+                                            <a href="<?php echo $post['guid'] ?>"><?php echo $post['post_title'] ?></a>
+                                        </li>
+                                    <?php } ?>
+                                </ul>
+                            </div>
+                        </div>
+                        <!--新闻end-->
+                    <?php }  else if ($item->object == 'page') {
+                        $post = get_post($item->object_id);
+                        $video = wp_video_shortcode(['width' => 740, 'height' => '416'], $post->post_content);
+                        ?>
                     <div class="box newbox">
                         <h2 class="bt">
-                            <a href="<?php echo $item->url;?>">MORE &gt;</a>
-                            <span><?php echo $item->title;?></span></h2>
-                        <div class="box-con">
-                            <div class="first-new clearfix">
-                                <div class="first-new-l fl">
-                                    <a href="<?php echo $first_post['guid']?>">
-                                        <img src="<?php echo $first_post_image?>"></a>
-                                </div>
-                                <div class="first-new-r fr">
-                                    <h3>
-                                        <a href="<?php echo $first_post['guid']?>"><?php echo $first_post['post_title']?></a></h3>
-                                    <P><?php echo mb_substr(strip_tags($first_post['post_content']), 0, 80)?> ...</P>
-                                    <P class="more-box">
-                                        <a class="more" href="<?php echo $first_post['guid']?>">更多</a></P>
-                                </div>
-                            </div>
-                            <ul class="list-50 mt-10">
-                                <?php foreach ($posts as $post) {?>
-                                <li>
-                                    <span class="data"><?php echo substr($post['post_date'], 0, 10)?></span>
-                                    <a href="<?php echo $post['guid']?>"><?php echo $post['post_title']?></a></li>
-                                <?php }?>
-                            </ul>
-                        </div>
+                            <a href="<?php echo $post->guid; ?>">MORE &gt;</a>
+                            <span><?php echo $post->post_title; ?></span></h2>
+                        <div class="box-con"><?php echo $video  ?></div>
                     </div>
-                    <!--新闻end-->
-                <?php } ?>
+                <?php
+                    }
+                }
+                ?>
 
             <?php }?>
 

@@ -276,6 +276,7 @@ input {
 }
 .box {
 	width: 100%;
+    min-height: 450px;
 }
 .box-con {
 	margin-top: 30px;
@@ -1042,7 +1043,7 @@ html[xmlns] .slides {
 	width: 410px;
 }
 .newbox {
-	min-height: 660px;
+	min-height: 450px;
 }
 .first-new {
 	position: relative; min-height: 214px;
@@ -1588,5 +1589,15 @@ html[xmlns] .slides {display: block;}
     float: right;
     padding: 10px 10px 10px 20px;
     padding-left: 100px;
+}
+.wpcf7-form {
+    margin-left:auto;
+    margin-right: auto;
+    width: 300px;
+}
+ input {
+    border: 1px solid #9E9E9E;
+    font-size: 14px;
+    line-height: 30px;
 }
 
