@@ -86,7 +86,7 @@ show_admin_bar( false );
 
     <div class="header-box clearfix">
         <div class="logo fl">
-            <a href="<?php echo esc_url( home_url( '/' ) ); ?>"><?php bloginfo( 'name' ); ?></a></div>
+            <a href="<?php echo esc_url( home_url( '/' ) ); ?>"><img width="100%" src="<?php echo get_stylesheet_directory_uri()?>/images/logo.png"></a></div>
         <div class="nav fr">
             <ul class="navbox">
                 <?php

@@ -22,10 +22,10 @@ a.zi:hover {
 .more-box {
 	text-align: right; line-height: 24px;
 }
-input[type='button'] {
+.gride input[type='button'] {
 	-webkit-border-radius: 0; -webkit-appearance: none;
 }
-input[type='submit'] {
+.gride input[type='submit'] {
 	-webkit-border-radius: 0; -webkit-appearance: none;
     line-height: 24px;
     padding-left: 10px;
@@ -230,7 +230,8 @@ input {
 	margin: 0px auto; width: 1200px; height: 126px;
 }
 .header .logo {
-	background: url("images/logo.png") no-repeat left top; width: 395px; height: 126px;
+	width: 395px; height: 126px;
+	background-size:auto;
 }
 .header .logo a {
 	width: 395px; height: 126px; text-indent: -2000px; display: block;
@@ -276,7 +277,7 @@ input {
 }
 .box {
 	width: 100%;
-    min-height: 530px;
+    min-height: 513px;
 }
 .box-con {
 	margin-top: 30px;
@@ -899,7 +900,13 @@ html[xmlns] .slides {
 	display: block;
 }
 .flexslider {
-	background: rgb(255, 255, 255); margin: 0px 0px 60px; position: relative; -ms-zoom: 1;
+	background: rgb(255, 255, 255); margin-bottom:60px; position: relative; -ms-zoom: 1;
+	margin-left:auto;
+	margin-right:auto;
+	width: 1246px;
+}
+.flexslider img {
+	height:450px;
 }
 .flex-viewport {
 	transition:1s; max-height: 2000px; -webkit-transition: all 1s ease; -moz-transition: all 1s ease; -o-transition: all 1s ease;
@@ -1379,7 +1386,7 @@ html[xmlns] .slides {display: block;}
 
 /* FlexSlider Default Theme
 *********************************/
-.flexslider { margin: 0 0 60px; background: #fff; position: relative; zoom: 1; }
+.flexslider { margin: 0 0 60px;margin-left:auto;margin-right: auto;width: 1246px; background: #fff; position: relative; zoom: 1; }
 .flex-viewport { max-height: 2000px; -webkit-transition: all 1s ease; -moz-transition: all 1s ease; -o-transition: all 1s ease; transition: all 1s ease; }
 .loading .flex-viewport { max-height: 300px; }
 .flexslider .slides { zoom: 1; }
@@ -1596,9 +1603,14 @@ html[xmlns] .slides {display: block;}
     margin-right: auto;
     width: 300px;
 }
- input {
+ .gride input {
     border: 1px solid #9E9E9E;
     font-size: 14px;
     line-height: 30px;
 }
+
+.search-field {
+	border:0px;
+}
+
 
