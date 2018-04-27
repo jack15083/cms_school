@@ -54,14 +54,16 @@ $total_items = count($center_items);
                         </div>
                         <!--新闻end-->
                     <?php }  else if ($item->object == 'page') {
+                        global $pages, $page;
                         $post = get_post($item->object_id);
-                        $video = wp_video_shortcode(['width' => 740, 'height' => '416'], $post->post_content);
+                        $page = 1;
+                        $pages[0] = $post->post_content;
                         ?>
                     <div class="box newbox">
                         <h2 class="bt">
                             <a href="<?php echo $post->guid; ?>">MORE &gt;</a>
                             <span><?php echo $post->post_title; ?></span></h2>
-                        <div class="box-con"><?php echo $video  ?></div>
+                        <div class="box-con"><?php the_content() ?></div>
                     </div>
                 <?php
                     }
