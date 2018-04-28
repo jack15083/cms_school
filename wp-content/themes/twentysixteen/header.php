@@ -112,7 +112,7 @@ show_admin_bar( false );
 
  if(is_home()) {
      $content = do_shortcode("[huge_it_slider id='1']");
-     preg_match_all('/<a href\="(.*?)" target="_blank">\s+<img\s+id\="huge.*?src\="(.*?)"\s+alt\="(.*?)"\s+.*?\/>/is', $content, $matches);
+     preg_match_all('/<a href\="(.*?)".*?>\s+<img\s+id\="huge.*?src\="(.*?)"\s+alt\="(.*?)"\s+.*?\/>/is', $content, $matches);
 
  ?>
 <!-- 轮播 开始 -->
@@ -133,14 +133,15 @@ show_admin_bar( false );
 <!-- 轮播 结束 -->
 <?php } else {
 $content = do_shortcode("[huge_it_slider id='2']");
-preg_match_all('/<a href\="(.*?)" target="_blank">\s+<img\s+id\="huge.*?src\="(.*?)"\s+alt\="(.*?)"\s+.*?\/>/is', $content, $matches);
+preg_match_all('/<a href\="(.*?)".*?>\s+<img\s+id\="huge.*?src\="(.*?)"\s+alt\="(.*?)"\s+.*?\/>/is', $content, $matches);
 preg_match_all('/<div class="huge_it_slideshow_description_text_\d\s+".*?>(.*?)<\/div>/is', $content, $matches1);
      ?>
-<div class="banner" style=" background-image:url(<?php echo $matches[2][0]?>);">
+<div class="banner" >
     <div class="banner-box">
+        <img src="<?php echo $matches[2][0]?>" width="100%" height="100%">
         <div class="con">
             <h4><?php echo $matches[3][0]?></h4>
-            <p class="clearfix"><?php echo $matches1[1][0]?></p>
+            <p class="clearfix"><?php echo str_replace("\n", '<br/>', $matches1[1][0])?></p>
         </div>
     </div>
 </div>

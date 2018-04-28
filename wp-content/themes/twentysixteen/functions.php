@@ -89,6 +89,7 @@ function twentysixteen_setup() {
         'index'   => __( '首页内容页菜单', 'twentysixteen'),
         'social'  => __( '底部链接菜单', 'twentysixteen'),
         'friend_link'  => __( '底部友情链接菜单', 'twentysixteen'),
+        'normal'  => __( '快速导航菜单', 'twentysixteen'),
 	) );
 
 	/*

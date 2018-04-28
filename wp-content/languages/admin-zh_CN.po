@@ -3494,7 +3494,7 @@ msgstr "在这个画面种，您可以将WordPress升级到最新版，也可以
 
 #: wp-admin/about.php:21
 msgid "Welcome to WordPress&nbsp;%s"
-msgstr "欢迎使用WordPress&nbsp;%s"
+msgstr "欢迎使用郑州大学化学实验中心网站管理后台&nbsp;%s"
 
 #: wp-admin/themes.php:92
 msgid "If you would like to see more themes to choose from, click on the &#8220;Add New&#8221; button and you will be able to browse or search for additional themes from the <a href=\"%s\">WordPress Theme Directory</a>. Themes in the WordPress Theme Directory are designed and developed by third parties, and are compatible with the license WordPress uses. Oh, and they&#8217;re free!"
@@ -4642,7 +4642,7 @@ msgstr "自动建议搜索引擎不抓取"
 
 #: wp-admin/includes/dashboard.php:1566
 msgid "Welcome to WordPress!"
-msgstr "欢迎使用WordPress！"
+msgstr "欢迎使用郑州大学化学实验中心网站管理后台！"
 
 #: wp-admin/includes/dashboard.php:1567
 msgid "We&#8217;ve assembled some links to get you started:"
@@ -4737,7 +4737,7 @@ msgstr "您也可以控制RSS feed的显示方式：最大输出文章数、全�
 
 #: wp-admin/includes/update-core.php:1301 wp-admin/update-core.php:511
 msgid "Welcome to WordPress %1$s. You will be redirected to the About WordPress screen. If not, click <a href=\"%2$s\">here</a>."
-msgstr "欢迎使用WordPress %1$s。我们将带您到“关于WordPress”页面。如果没有自动跳转，请<a href=\"%2$s\">点击这里</a>。"
+msgstr "欢迎使用郑州大学化学实验中心网站管理后台 %1$s。请<a href=\"%2$s\">点击这里</a>。"
 
 #: wp-admin/setup-config.php:381
 msgid "After you&#8217;ve done that, click &#8220;Run the installation.&#8221;"
@@ -5307,7 +5307,7 @@ msgstr "WordPress &rsaquo; 调整配置文件"
 
 #: wp-admin/setup-config.php:153
 msgid "Welcome to WordPress. Before getting started, we need some information on the database. You will need to know the following items before proceeding."
-msgstr "欢迎使用WordPress。在开始前，我们需要您数据库的一些信息。请准备好如下信息。"
+msgstr "欢迎使用郑州大学化学实验中心网站管理后台。在开始前，我们需要您数据库的一些信息。请准备好如下信息。"
 
 #: wp-admin/setup-config.php:155
 msgid "Database name"
@@ -5562,7 +5562,7 @@ msgstr "返回“更新”"
 
 #: wp-admin/includes/update-core.php:1302 wp-admin/update-core.php:512
 msgid "Welcome to WordPress %1$s. <a href=\"%2$s\">Learn more</a>."
-msgstr "欢迎使用WordPress %1$s。<a href=\"%2$s\">了解更多</a>。"
+msgstr "欢迎使用郑州大学化学实验中心网站管理后台 %1$s。<a href=\"%2$s\">了解更多</a>。"
 
 #: wp-admin/edit-tags.php:258
 msgid "Adding Categories"
@@ -5830,7 +5830,7 @@ msgstr "由于当前多站点功能已经开启，您可以直接通过输入用
 
 #: wp-admin/credits.php:21 wp-admin/freedoms.php:20 wp-admin/privacy.php:20
 msgid "Welcome to WordPress %s"
-msgstr "欢迎使用WordPress %s"
+msgstr "欢迎使用郑州大学化学实验中心网站管理后台 %s"
 
 #: wp-admin/about.php:273
 msgid "Return to Dashboard &rarr; Updates"
@@ -8893,7 +8893,7 @@ msgstr "小工具%s"
 
 #: wp-admin/includes/upgrade.php:174
 msgid "Welcome to WordPress. This is your first post. Edit or delete it, then start writing!"
-msgstr "欢迎使用WordPress。这是您的第一篇文章。编辑或删除它，然后开始写作吧！"
+msgstr "欢迎使用郑州大学化学实验中心网站管理后台。这是您的第一篇文章。编辑或删除它，然后开始写作吧！"
 
 #: wp-admin/includes/upgrade.php:183
 msgid "Hello world!"

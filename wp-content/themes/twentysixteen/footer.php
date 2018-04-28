@@ -36,10 +36,11 @@ if ( has_nav_menu( 'friend_link' ) ) {
                 <?php }}?>
             </div>
             <div class="foot-conect">
-                <P class="c-name">清华大学地球系统科学系暨全球变化研究院</P>
-                <P class="clearfix">电话：（010）6277 2750/（010）6279 7284</P>
-                <P class="clearfix">电子邮件：dess@mail.tsinghua.edu.cn</P>
-                <P class="clearfix">地址：北京市海淀区清华大学蒙民伟科技大楼南楼801、803、805室（邮编：100084）</P></div>
+
+                <P class="c-name">郑州大学化学实险中心</P>
+                <P class="clearfix">电话：0371-67780037  传真：0371-67780037</P>
+                <P class="clearfix">电子邮件：ecc@zzu.edu.cn</P>
+                <P class="clearfix"> 地址：郑州市科学大道100号</P></div>
         </div>
         <div class="footer-con-r fr">
             <div class="flink clearfix">
@@ -49,13 +50,14 @@ if ( has_nav_menu( 'friend_link' ) ) {
                             window.open(selObj.options[selObj.selectedIndex].value);
                         }</script>
                     <select name="select" onchange="MM_o(this)">
+                        <OPTION value="">选择友情链接地址</OPTION>
                         <?php foreach ($friend_items as $key => $item) {?>
                         <OPTION value="<?php echo $item->url?>"><?php echo $item->title?></OPTION>
                         <?php }?>
                     </select>
                 </div>
             </div>
-            <P class="cright mt-10">Copyright © 2020郑州大学地球系统科学系. All Rights Reserved</P>
+            <P class="cright mt-10">Copyright © 2018郑州大学化学实险中心. All Rights Reserved</P>
         </div>
     </div>
 </div>

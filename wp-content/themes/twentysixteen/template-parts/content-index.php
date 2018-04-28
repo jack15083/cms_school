@@ -18,7 +18,6 @@ $total_items = count($center_items);
                     if ($item->object == 'category') {
                         $posts = wp_get_recent_posts(['category' => $item->object_id, 'numberposts' => 9]);
                         $first_post = array_shift($posts);
-                        //print_r($first_post);die();
                         $first_post_image = get_the_post_thumbnail_url($first_post['ID'], 'large');
                         ?>
                         <!--新闻begin-->
@@ -77,12 +76,10 @@ $total_items = count($center_items);
 
             <?php
             foreach ($center_items as $key => $item) {
-                if($item->object != 'category') {
-                    continue;
-                }
 
                 if(($key + 1) % 2 == 0) {
-                    $posts = wp_get_recent_posts(['category' => $item->object_id, 'numberposts' => 5]);
+                    if($item->object == 'category') {
+                    $posts = wp_get_recent_posts(['category' => $item->object_id, 'numberposts' => 10]);
 
                 ?>
 
@@ -111,24 +108,46 @@ $total_items = count($center_items);
 
                         </ul>
                     </div>
-                    <div class="i-ad">
+                    <!--<div class="i-ad">
                         <a href="http://www.tsinghua.edu.cn/publish/ess/10533/index.html">
                             <img src="http://www.tsinghua.edu.cn/publish/ess/images/index_25.jpg"></a>
-                    </div>
+                    </div>-->
                 </div>
 
-            <?php }}?>
+            <?php } elseif($item->object === 'custom') {
+                        $menu_items = get_menu_items_by_location('normal');
+                        ?>
+                <div class="box">
+                    <h2 class="bt">
+                        <!--<a href="<?php /*echo $item->url;*/?>">MORE &gt;</a>-->
+                        <span><?php echo $item->title;?></span></h2>
+                    <div class="box-con">
+                        <ul class="i-zjlt ul-menu">
+                            <?php foreach ($menu_items as $menu) {
+                                ?>
+                                <li class="clearfix zjlt-menu">
+
+                                    <P class="tit">
+                                        <a href="<?php echo $menu['url']?>"><?php echo $menu['title']?></a></P>
+
+                                </li>
+                            <?php }?>
+
+                        </ul>
+                    </div>
+                    <!--<div class="i-ad">
+                        <a href="http://www.tsinghua.edu.cn/publish/ess/10533/index.html">
+                            <img src="http://www.tsinghua.edu.cn/publish/ess/images/index_25.jpg"></a>
+                    </div>-->
+                </div>
+            <?php }}}?>
 
         </div>
 
     </div>
     <?php if($total_items % 2 == 1 ) {
         $item = array_pop($center_items);
-        $posts = wp_get_recent_posts(['category' => $item->object_id, 'numberposts' => 2]);
-        $first_post = array_shift($posts);
-        $last_post = $posts[0];
-        $first_post_image = get_the_post_thumbnail_url($first_post['ID'], 'large');
-        $last_post_image = get_the_post_thumbnail_url($last_post['ID'], 'large');
+        $posts = wp_get_recent_posts(['category' => $item->object_id, 'numberposts' => 4]);
     ?>
     <div class="index-box" style="margin-top:-40px;">
         <div class="i-xsgz  mt-45">
@@ -136,25 +155,21 @@ $total_items = count($center_items);
                 <a href="<?php echo $item->url;?>">MORE &gt;</a>
                 <span><?php echo $item->title;?></span></h2>
             <div class="box-con clearfix">
-                <div class="sxgz-l fl">
-                    <a class="tj" href="<?php echo $first_post['guid']?>">
-                        <IMG src="<?php echo $first_post_image?> ">
-                        <P class="title"><?php echo $first_post['post_title']?></P></a>
-                    <ul class="list-50 mt-10"></ul>
-                </div>
-                <div class="sxgz-r fr">
+                <?php foreach ($posts as $post) {?>
+                <div class="box-con-left">
                     <div class="ky-new-t">
-                        <a href="<?php echo $last_post['guid']?>">
-                            <img src="<?php echo $last_post_image?>"></a>
+                        <a href="<?php echo $post['guid']?>">
+                            <img src="<?php echo get_the_post_thumbnail_url($post['ID'], 'large');?>"></a>
                     </div>
                     <div class="ky-new-b">
                         <h3>
-                            <a href="<?php echo $last_post['guid']?>"><?php echo $last_post['post_title']?></a></h3>
-                        <P> <?php echo mb_substr(strip_tags($last_post['post_content']), 0, 80)?> ...</P>
+                            <a href="<?php echo $post['guid']?>"><?php echo $post['post_title']?></a></h3>
+                        <P> <?php echo mb_substr(strip_tags($post['post_content']), 0, 30)?> ...</P>
                         <P class="more-box">
-                            <a class="more" href="<?php echo $last_post['guid']?>">更多</a></P>
+                            <a class="more" href="<?php echo $post['guid']?>">更多</a></P>
                     </div>
                 </div>
+                <?php }?>
             </div>
         </div>
     </div>
