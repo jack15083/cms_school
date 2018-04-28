@@ -9,7 +9,7 @@
 global $wp_query;
 
 if(!empty($wp_query->query['current_menu']['child'])) {
-get_left_menu();
+echo get_left_menu();
 ?>
 <div class="gride-r fr">
     <?php get_breadcrumbs()?>

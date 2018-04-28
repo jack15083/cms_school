@@ -510,6 +510,9 @@ function get_left_menu()
         <h2 class="ebt"><span>' . $parent->cat_name . '</span></h2>
         <ul class="left-dh">';
 
+        if(empty($category)) {
+            return '';
+        }
         foreach ($category as $cat) {
             $act = '';
             if ($cur_cat_id == $cat->cat_ID) {
@@ -522,6 +525,9 @@ function get_left_menu()
     }
     elseif (!empty($wp_query->query['current_menu'])) {
         $object_id = get_queried_object_id();
+        if(empty($wp_query->query['current_menu']['child'])) {
+            return '';
+        }
         $html = '<!--左侧开始-->
     <div class="gride-l fl">
         <h2 class="ebt"><span>' . $wp_query->query['current_menu']['title'] . '</span></h2>
@@ -536,10 +542,10 @@ function get_left_menu()
 
         $html .= '</ul></div>';
     } else {
-
+        $html = '';
     }
 
-    echo $html;
+    return $html;
 
 }
 

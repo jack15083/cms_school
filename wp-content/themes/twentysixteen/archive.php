@@ -19,7 +19,10 @@ get_header();
 ?>
 
     <div class="gride clearfix">
-        <?php get_left_menu();?>
+        <?php $leftHtml = get_left_menu();
+        if($leftHtml) {
+            echo $leftHtml;
+        ?>
         <div class="gride-r fr">
         <?php get_breadcrumbs()?>
             <h1 class="ej-bigtit"><?php echo str_replace('分类：', '', get_the_archive_title())?></h1>
@@ -53,6 +56,39 @@ get_header();
 		endif;
 		?>
         </div>
+        <?php } else {?>
+            <?php get_breadcrumbs()?>
+            <h1 class="ej-bigtit"><?php echo str_replace('分类：', '', get_the_archive_title())?></h1>
+            <?php if ( have_posts() ) : ?>
+
+                <?php
+                // Start the Loop.
+                while ( have_posts() ) : the_post();
+
+                    /*
+                     * Include the Post-Format-specific template for the content.
+                     * If you want to override this in a child theme, then include a file
+                     * called content-___.php (where ___ is the Post Format name) and that will be used instead.
+                     */
+                    get_template_part( 'template-parts/content', get_post_format() );
+
+                    // End the loop.
+                endwhile;
+
+                // Previous/next page navigation.
+                the_posts_pagination( array(
+                    'prev_text'          => __( '上一页', 'twentysixteen' ),
+                    'next_text'          => __( '下一页', 'twentysixteen' ),
+                    'before_page_number' => '<span class="meta-nav screen-reader-text">' . __( '', 'twentysixteen' ) . ' </span>',
+                ) );
+
+            // If no content, include the "No posts found" template.
+            else :
+                get_template_part( 'template-parts/content', 'none' );
+
+            endif;
+            ?>
+        <?php }?>
 	</div>
 
 <?php //get_sidebar(); ?>
