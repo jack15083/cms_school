@@ -8,6 +8,7 @@
  */
 $leftHtml = get_left_menu();
 if($leftHtml) {
+    echo $leftHtml;
 ?>
     <!--右侧开始-->
     <div class="gride-r fr">
