@@ -1394,7 +1394,7 @@ html[xmlns] .slides {display: block;}
 .screen-reader-text {
     line-height: 30px;
 }
-.mt-45 p {
+.about p {
     padding-top: 10px;
     padding-bottom: 10px;
 }
@@ -1525,6 +1525,17 @@ html[xmlns] .slides {display: block;}
     width: 22%;
     padding-left: 25px;
 
+}
+
+.gride-r .box-con-left {
+	padding-top:25px;
+}
+
+.gride-r .box-con-left img {
+	height: 151px;
+}
+.gride-r .box-con-left .ky-new-t {
+	height: 151px;
 }
 .parallax-content .span5 {
     width: 470px;

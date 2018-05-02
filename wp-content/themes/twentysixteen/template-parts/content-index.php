@@ -165,8 +165,7 @@ $total_items = count($center_items);
                         <h3>
                             <a href="<?php echo $post['guid']?>"><?php echo $post['post_title']?></a></h3>
                         <P> <?php echo mb_substr(strip_tags($post['post_content']), 0, 30)?> ...</P>
-                        <P class="more-box">
-                            <a class="more" href="<?php echo $post['guid']?>">更多</a></P>
+
                     </div>
                 </div>
                 <?php }?>
