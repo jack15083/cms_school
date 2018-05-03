@@ -117,29 +117,27 @@ $total_items = count($center_items);
             <?php } elseif($item->object === 'custom') {
                         $menu_items = get_menu_items_by_location('normal');
                         ?>
-                <div class="box">
-                    <h2 class="bt">
-                        <!--<a href="<?php /*echo $item->url;*/?>">MORE &gt;</a>-->
-                        <span><?php echo $item->title;?></span></h2>
-                    <div class="box-con">
-                        <ul class="i-zjlt ul-menu">
-                            <?php foreach ($menu_items as $menu) {
-                                ?>
-                                <li class="clearfix zjlt-menu">
-
-                                    <P class="tit">
-                                        <a href="<?php echo $menu['url']?>"><?php echo $menu['title']?></a></P>
-
-                                </li>
-                            <?php }?>
-
-                        </ul>
-                    </div>
-                    <!--<div class="i-ad">
-                        <a href="http://www.tsinghua.edu.cn/publish/ess/10533/index.html">
-                            <img src="http://www.tsinghua.edu.cn/publish/ess/images/index_25.jpg"></a>
-                    </div>-->
+            <div class="box">
+                <h2 class="bt">
+                    <!--<a href="<?php /*echo $item->url;*/?>">MORE &gt;</a>-->
+                    <span><?php echo $item->title;?></span></h2>
+                <div class="box-con box-custom">
+                    <ul class="yjfx  clearfix">
+                        <?php
+                        $key1 = 0;
+                        foreach ($menu_items as $menu) {
+                            $hover = '';
+                            if($key1 == 0) {
+                                $hover = 'hover';
+                            }
+                            $key1++;
+                            ?>
+                            <li><a href="<?php echo $menu['url']?>" style="background-image:url(<?php echo get_stylesheet_directory_uri()?>/images/fx_0<?php echo ($key1%4 + 1)?>.jpg);" class="<?php echo $hover?>"><span><?php echo $menu['title']?></span></a></li>
+                        <?php }?>
+                    </ul>
                 </div>
+            </div>
+
             <?php }}}?>
 
         </div>

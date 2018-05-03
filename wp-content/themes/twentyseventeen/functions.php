@@ -585,4 +585,3 @@ require get_parent_theme_file_path( '/inc/customizer.php' );
  * SVG icons functions and filters.
  */
 require get_parent_theme_file_path( '/inc/icon-functions.php' );
-remove_action('wp_head', 'index_rel_link');//当前文章的索引

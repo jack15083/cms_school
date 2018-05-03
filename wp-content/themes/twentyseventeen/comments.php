@@ -1,82 +1,55 @@
 <?php
-/**
- * The template for displaying comments
- *
- * This is the template that displays the area of the page that contains both the current comments
- * and the comment form.
- *
- * @link https://codex.wordpress.org/Template_Hierarchy
- *
- * @package WordPress
- * @subpackage Twenty_Seventeen
- * @since 1.0
- * @version 1.0
- */
-
-/*
- * If the current post is protected by a password and
- * the visitor has not yet entered the password we will
- * return early without loading the comments.
- */
-if ( post_password_required() ) {
-	return;
-}
+if ( post_password_required() )
+    return;
 ?>
-
-<div id="comments" class="comments-area">
-
-	<?php
-	// You can start editing here -- including this comment!
-	if ( have_comments() ) : ?>
-		<h2 class="comments-title">
-			<?php
-			$comments_number = get_comments_number();
-			if ( '1' === $comments_number ) {
-				/* translators: %s: post title */
-				printf( _x( 'One Reply to &ldquo;%s&rdquo;', 'comments title', 'twentyseventeen' ), get_the_title() );
-			} else {
-				printf(
-					/* translators: 1: number of comments, 2: post title */
-					_nx(
-						'%1$s Reply to &ldquo;%2$s&rdquo;',
-						'%1$s Replies to &ldquo;%2$s&rdquo;',
-						$comments_number,
-						'comments title',
-						'twentyseventeen'
-					),
-					number_format_i18n( $comments_number ),
-					get_the_title()
-				);
-			}
-			?>
-		</h2>
-
-		<ol class="comment-list">
-			<?php
-				wp_list_comments( array(
-					'avatar_size' => 100,
-					'style'       => 'ol',
-					'short_ping'  => true,
-					'reply_text'  => twentyseventeen_get_svg( array( 'icon' => 'mail-reply' ) ) . __( 'Reply', 'twentyseventeen' ),
-				) );
-			?>
-		</ol>
-
-		<?php the_comments_pagination( array(
-			'prev_text' => twentyseventeen_get_svg( array( 'icon' => 'arrow-left' ) ) . '<span class="screen-reader-text">' . __( 'Previous', 'twentyseventeen' ) . '</span>',
-			'next_text' => '<span class="screen-reader-text">' . __( 'Next', 'twentyseventeen' ) . '</span>' . twentyseventeen_get_svg( array( 'icon' => 'arrow-right' ) ),
-		) );
-
-	endif; // Check for have_comments().
-
-	// If comments are closed and there are comments, let's leave a little note, shall we?
-	if ( ! comments_open() && get_comments_number() && post_type_supports( get_post_type(), 'comments' ) ) : ?>
-
-		<p class="no-comments"><?php _e( 'Comments are closed.', 'twentyseventeen' ); ?></p>
-	<?php
-	endif;
-
-	comment_form();
-	?>
-
-</div><!-- #comments -->
+<div id="comments" class="responsesWrapper">
+    <meta content="UserComments:<?php echo number_format_i18n( get_comments_number() );?>" itemprop="interactionCount">
+    <h3 class="comments-title">共有 <span class="commentCount"><?php echo number_format_i18n( get_comments_number() );?></span> 条评论</h3>
+    <ol class="commentlist">
+        <?php
+        wp_list_comments( array(
+            'style'       => 'ol',
+            'short_ping'  => true,
+            'avatar_size' => 48,
+            'type'        =>'comment',
+            'callback'    =>'simple_comment',
+        ) );
+        ?>
+    </ol>
+    <nav class="navigation comment-navigation u-textAlignCenter" data-fuck="<?php the_ID();?>">
+        <?php paginate_comments_links(array('prev_next'=>true)); ?>
+    </nav>
+    <?php if(comments_open()) : ?>
+        <div id="respond" class="respond" role="form">
+            <h2 id="reply-title" class="comments-title"><?php comment_form_title( '', '回复给 %s' ); ?> <small>
+                    <?php cancel_comment_reply_link(); ?>
+                </small></h2>
+            <?php if ( get_option('comment_registration') && !$user_ID ) : ?>
+                <p>You must be <a href="<?php echo get_option('siteurl'); ?>/wp-login.php?redirect_to=<?php echo urlencode(get_permalink()); ?>">logged in</a> to post a comment.</p>
+            <?php else : ?>
+                <form action="<?php echo get_option('siteurl'); ?>/wp-comments-post.php" method="post" class="commentform" id="commentform">
+                    <?php if ( $user_ID ) : ?>
+                        <p class="warning-text" style="margin-bottom:10px">以<a href="<?php echo get_option('siteurl'); ?>/wp-admin/profile.php"><?php echo $user_identity; ?></a>身份登录 | <a class="link-logout" href="<?php echo wp_logout_url(get_permalink()); ?>">注销 »</a></p>
+                        <textarea class="form-control" rows="3" id="comment" onkeydown="if(event.ctrlKey&&event.keyCode==13){document.getElementById('submit').click();return false};" placeholder="当你的才华还撑不起你的野心时,那你就应该静下心来评论下..." class="form-control" tabindex="1" name="comment"></textarea>
+                    <?php else : ?>
+                        <textarea class="form-control" rows="3" id="comment" onkeydown="if(event.ctrlKey&&event.keyCode==13){document.getElementById('submit').click();return false};" placeholder="当你的才华还撑不起你的野心时,那你就应该静下心来评论下..." tabindex="1" name="comment"></textarea>
+                        <div class="commentform-info">
+                            <label id="author_name" for="author">
+                                <input class="form-control" id="author" type="text" tabindex="2" value="<?php echo $comment_author; ?>" name="author" placeholder="昵称[必填]" required>
+                            </label>
+                            <label id="author_email" for="email">
+                                <input class="form-control" id="email" type="text" tabindex="3" value="<?php echo $comment_author_email; ?>" name="email" placeholder="邮箱[必填]" required>
+                            </label>
+                            <label id="author_website" for="url">
+                                <input class="form-control" id="url" type="text" tabindex="4" value="<?php echo $comment_author_url; ?>" name="url" placeholder="网址(可不填)">
+                            </label>
+                        </div>
+                    <?php endif; ?>
+                    <div class="btn-group commentBtn" role="group">
+                        <input name="submit" type="submit" id="submit" class="btn btn-sm btn-danger btn-block" tabindex="5" value="发表评论" /></div>
+                    <?php comment_id_fields(); ?>
+                </form>
+            <?php endif; ?>
+        </div>
+    <?php endif; ?>
+</div>
