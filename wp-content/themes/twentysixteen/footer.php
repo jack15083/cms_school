@@ -24,7 +24,6 @@ if ( has_nav_menu( 'friend_link' ) ) {
 
 ?>
 
-<?php wp_footer(); ?>
 <div class="footer">
     <div class="footer-con">
         <div class="footer-con-l fl">
@@ -62,5 +61,6 @@ if ( has_nav_menu( 'friend_link' ) ) {
     </div>
 </div>
 <!--底部 end-->
+<?php wp_footer(); ?>
 </body>
 </html>
