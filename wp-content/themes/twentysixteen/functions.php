@@ -553,6 +553,7 @@ function get_menu_items_by_location($location) {
     global $wp_query;
     $menu_items = [];
     $post_id = get_queried_object_id();
+    $post_type = get_query_var('post_type');
 
     if ( has_nav_menu( $location ) ) {
         $locations = get_nav_menu_locations();
@@ -566,11 +567,12 @@ function get_menu_items_by_location($location) {
                 if ($post_id == 0 && $key == 0) {
                     $item['menu_act_class'] = 'act';
                 }
-                if ($post_id == $item['object_id']) {
+                if ($post_id == $item['object_id'] || (!empty($post_type) && isset($item['object']) && $item['object'] === $post_type)) {
                     $item['menu_act_class'] = 'act';
                 }
                 $menu_items[$item['ID']] = $item;
             }
+
         }
 
         foreach ($menu_items as &$menu) {
