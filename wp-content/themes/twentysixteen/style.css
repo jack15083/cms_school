@@ -244,7 +244,7 @@ input {
 	width: 80px; height: 58px; float: left; position: relative;
 }
 .header .navbox li a {
-	width: 80px; height: 54px; text-align: center; line-height: 30px; padding-bottom: 4px; font-size: 15px; display: block;
+	width: 80px; height: 54px; text-align: center; line-height: 30px; padding-bottom: 4px; font-size: 16px; display: block;
 }
 .header .navbox li a.act {
 	padding-bottom: 0px; border-bottom-color: rgb(178, 135, 48); border-bottom-width: 4px; border-bottom-style: solid;

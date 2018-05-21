@@ -171,7 +171,12 @@
 
 	<div id="no-reply-<?php bbp_topic_id(); ?>" class="bbp-no-reply">
 		<div class="bbp-template-notice">
-			<p><?php is_user_logged_in() ? _e( 'You cannot reply to this topic.', 'bbpress' ) : _e( 'You must be logged in to reply to this topic.', 'bbpress' ); ?></p>
+			<p><?php is_user_logged_in() ? _e( 'You cannot reply to this topic.', 'bbpress' ) : _e( 'You must be logged in to reply to this topic.', 'bbpress' ); 
+			 if(!is_user_logged_in()) {
+                 echo '<a href="' . wp_login_url(bbp_get_reply_url(bbp_get_topic_id())) . '"><b>登录</b></a> | ';
+                 echo '<a href="' . wp_registration_url() . '"><b>注册</b></a>';
+             }
+			?></p>
 		</div>
 	</div>
 

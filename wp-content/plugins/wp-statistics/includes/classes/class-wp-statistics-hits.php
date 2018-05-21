@@ -560,7 +560,7 @@ class WP_Statistics_Hits {
 		if ( ! $this->exclusion_match ) {
 
 			// Don't track anything but actual pages and posts, unless we've been told to.
-			if ( $WP_Statistics->get_option( 'track_all_pages' ) || is_page() || is_single() || is_front_page()  ) {
+			if ( $WP_Statistics->get_option( 'track_all_pages' ) || is_page() || is_single() || is_front_page() ) {
 				// Get the pages or posts ID if it exists and we haven't set it in the visitors code.
 				if ( ! $this->current_page_id && is_object( $wp_query ) ) {
 					$this->current_page_id = $wp_query->get_queried_object_id();
@@ -568,7 +568,7 @@ class WP_Statistics_Hits {
 
 				// If we didn't find a page id, we don't have anything else to do.
 				if ( ! $this->current_page_id ) {
-					//return;
+					return;
 				}
 
 				// Get the current page URI.

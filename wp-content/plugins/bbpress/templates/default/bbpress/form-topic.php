@@ -231,7 +231,14 @@
 
 	<div id="no-topic-<?php bbp_topic_id(); ?>" class="bbp-no-topic">
 		<div class="bbp-template-notice">
-			<p><?php is_user_logged_in() ? _e( 'You cannot create new topics.', 'bbpress' ) : _e( 'You must be logged in to create new topics.', 'bbpress' ); ?></p>
+			<p><?php is_user_logged_in() ? _e( 'You cannot create new topics.', 'bbpress' ) : _e( 'You must be logged in to create new topics.', 'bbpress' );
+                if(!is_user_logged_in()) {
+                    echo '<a href="' . wp_login_url(bbp_get_reply_url(bbp_get_topic_id())) . '"><b>登录</b></a> | ';
+                    echo '<a href="' . wp_registration_url() . '"><b>注册</b></a>';
+                }
+			?>
+
+            </p>
 		</div>
 	</div>
 
