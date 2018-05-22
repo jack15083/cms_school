@@ -142,7 +142,7 @@
             if (tab.html() === "") {
                 var head = "<ul class=\"" + classPrefix + "tab-head\">";
 
-                for (var i = 0; i < 0; i++) {
+                for (var i = 0; i < 1; i++) {
                     var active = (i === 0) ? " class=\"active\"" : "";
                     head += "<li" + active + "><a href=\"javascript:;\">" + category[i] + "</a></li>";
                 }
@@ -153,7 +153,7 @@
 
                 var container = "<div class=\"" + classPrefix + "tab-container\">";
 
-                for (var x = 0; x < 4; x++) {
+                for (var x = 0; x < 1; x++) {
                     var display = (x === 0) ? "" : "display:none;";
                     container += "<div class=\"" + classPrefix + "tab-box\" style=\"height: 260px;overflow: hidden;overflow-y: auto;" + display + "\"></div>";
                 }
@@ -164,7 +164,7 @@
             }
 
             var tabBoxs = tab.find("." + classPrefix + "tab-box");
-            var emojiCategories = ["github-emoji"];
+            var emojiCategories = ["github-emoji", "twemoji", "font-awesome", logoPrefix];
 
             var drawTable = function () {
                 var cname = emojiCategories[emojiTabIndex];
@@ -230,7 +230,10 @@
                     $(this).toggleClass("selected");
 
                     if ($(this).hasClass("selected")) {
-                        selecteds.push($(this).attr("value"));
+                        var index = selecteds.indexOf($(this).attr("value"));
+                        if (index < 0) {
+                            selecteds.push($(this).attr("value"));
+                        }
                     }
                 });
             };

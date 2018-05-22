@@ -919,7 +919,6 @@ function _get_path_to_translation_from_lang_dir( $domain ) {
 	$mofile = "{$domain}-{$locale}.mo";
 
 	$path = WP_LANG_DIR . '/plugins/' . $mofile;
-
 	if ( in_array( $path, $cached_mofiles ) ) {
 		return $path;
 	}

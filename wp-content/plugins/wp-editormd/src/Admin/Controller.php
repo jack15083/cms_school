@@ -25,6 +25,10 @@ class Controller {
 	 * @return string
 	 */
 	public function get_post_type() {
+		if ( ! function_exists( 'get_current_screen' ) ) {
+			return null;
+		}
+
 		return get_current_screen()->post_type;
 	}
 
@@ -43,9 +47,7 @@ class Controller {
 
 		add_filter( 'quicktags_settings', array( $this, 'quicktags_settings' ), 'content' );
 
-		add_action( 'admin_init', array( $this, 'disable_rich_editing' ) );
-
-		add_action( 'admin_init', array( $this, 'jetpack_markdown_posting_always_on' ), 11 );
+		add_action( 'admin_init', array( $this, 'editormd_markdown_posting_always_on' ), 11 );
 
 		// 如果模块是激活状态保持文章/页面正常激活，评论Markdown是可选
 		add_filter( 'pre_option_' . WPComMarkdown::POST_OPTION, '__return_true' );
@@ -95,6 +97,13 @@ class Controller {
 				wp_enqueue_script( 'Editormd-lang-us', WP_EDITORMD_URL . '/assets/Editormd/languages/en.js', array(), '2.0.1', true );//默认载入美国英语语言资源库
 		}
 
+
+		if ( $this->get_option( 'highlight_library_style', 'syntax_highlighting' ) == 'customize' ) {
+			$prismTheme = 'default';
+		} else {
+			$prismTheme = $this->get_option( 'highlight_library_style', 'syntax_highlighting' );
+		}
+
 		wp_localize_script( 'Config', 'Editormd', array(
 			'editormdUrl'       => WP_EDITORMD_URL,
 			'syncScrolling'     => $this->get_option( 'sync_scrolling', 'editor_basics' ), //编辑器同步
@@ -106,12 +115,13 @@ class Controller {
 			'editorTheme'       => $this->get_option( 'code_style', 'editor_style' ), //编辑器编辑主题
 			'emoji'             => $this->get_option( 'support_emoji', 'editor_emoji' ), //emoji表情
 			'tex'               => $this->get_option( 'support_katex', 'editor_katex' ), //科学公式
-			'flowChart'         => $this->get_option( 'support_flowchart', 'editor_flow' ), //流程图
-			'sequenceDiagram'   => $this->get_option( 'support_sequence', 'editor_sequence' ), //时序图
 			'taskList'          => $this->get_option( 'task_list', 'editor_basics' ), //task lists
 			'imagePaste'        => $this->get_option( 'imagepaste', 'editor_basics' ), //图像粘贴
 			'staticFileCDN'     => $this->get_option( 'static_cdn', 'editor_basics' ), //静态资源CDN地址
-			'prismTheme'        => $this->get_option( 'highlight_library_style', 'syntax_highlighting' ), //语法高亮风格
+			'prismTheme'        => $prismTheme, //语法高亮风格
+			'prismLineNumbers'  => $this->get_option( 'line_numbers', 'syntax_highlighting' ), //行号显示
+			'mindMap'           => $this->get_option( 'support_mindmap', 'editor_mindmap' ), //思维导图
+			'mermaid'           => $this->get_option('support_mermaid','editor_mermaid'), // Mermaid
 			'placeholderEditor' => __( 'Enjoy Markdown! Coding now...', $this->text_domain ),
 			'imgUploading'      => __( 'Image Uploading...', $this->text_domain ),
 			'imgUploadeFailed'  => __( 'Failed To Upload The Image!', $this->text_domain ),
@@ -122,7 +132,7 @@ class Controller {
 	/**
 	 * 将 Jetpack Markdown写作模式始终设置为开
 	 */
-	function jetpack_markdown_posting_always_on() {
+	public function editormd_markdown_posting_always_on() {
 		if ( ! class_exists( 'WPComMarkdown' ) ) {
 			return;
 		}
@@ -139,7 +149,7 @@ class Controller {
 	 *
 	 * @return mixed
 	 */
-	function quicktags_settings( $qt_init ) {
+	public function quicktags_settings( $qt_init ) {
 
 		// 仅删除指定 post 类型上的按钮
 		if ( ! post_type_supports( $this->get_post_type(), WPComMarkdown::POST_TYPE_SUPPORT ) ) {
@@ -149,18 +159,6 @@ class Controller {
 		$qt_init['buttons'] = '';
 
 		return $qt_init;
-	}
-
-	/**
-	 * 禁用富文本编辑器
-	 *
-	 * @param $default
-	 *
-	 * @return bool
-	 */
-	function disable_rich_editing( $default ) {
-
-		return $default;
 	}
 
 	/**

@@ -2,6 +2,8 @@
 
 namespace Utils;
 
+define('WP_MIND_LIB', WP_EDITORMD_URL . '/assets/Editormd/lib/mindMap.min.js');
+
 class Activator {
 
 	public static function activate() {
@@ -44,12 +46,12 @@ class Activator {
 			add_option( 'editor_katex', Activator::$defaultOptionsKatex, '', 'yes' );
 		}
 
-		if ( get_option( 'editor_flow' ) == false ) {
-			add_option( 'editor_flow', Activator::$defaultOptionsFlow, '', 'yes' );
+		if ( get_option( 'editor_mermaid' ) == false ) {
+			add_option( 'editor_mermaid', Activator::$defaultOptionsKatex, '', 'yes' );
 		}
 
-		if ( get_option( 'editor_sequence' ) == false ) {
-			add_option( 'editor_sequence', Activator::$defaultOptionsSequence, '', 'yes' );
+		if ( get_option( 'editor_mindmap' ) == false ) {
+			add_option( 'editor_mindmap', Activator::$defaultOptionsMindMap, '', 'yes' );
 		}
 
 		if ( get_option( 'editor_advanced' ) == false ) {
@@ -75,7 +77,9 @@ class Activator {
 	public static $defaultOptionsSyntax = array(
 		'highlight_mode_auto'            => 'off',
 		'line_numbers'                   => 'off',
+		'show_language'                  => 'off',
 		'highlight_library_style'        => 'default',
+		'customize_my_style'             => 'nothing',
 		'highlight_mode_customize'       => 'off',
 		'customize_highlight_style'      => 'nothing',
 		'customize_highlight_javascript' => 'nothing'
@@ -93,13 +97,13 @@ class Activator {
 		'support_katex' => 'off'
 	);
 
-	public static $defaultOptionsFlow = array(
-		'support_flowchart' => 'off'
+	public static $defaultOptionsMermaid = array(
+		'support_mermaid' => 'off'
 	);
 
-	public static $defaultOptionsSequence = array(
-		'support_sequence' => 'off',
-		'sequence_style'   => 'simple'
+	public static $defaultOptionsMindMap = array(
+		'support_mindmap' => 'off',
+		'customize_mindmap' => WP_MIND_LIB
 	);
 
 	public static $defaultOptionsAdvanced = array(

@@ -651,7 +651,6 @@ function wp_get_nav_menu_items( $menu, $args = array() ) {
 		return false;
 	}
 
-
 	$defaults = array( 'order' => 'ASC', 'orderby' => 'menu_order', 'post_type' => 'nav_menu_item',
 		'post_status' => 'publish', 'output' => ARRAY_A, 'output_key' => 'menu_order', 'nopaging' => true );
 	$args = wp_parse_args( $args, $defaults );

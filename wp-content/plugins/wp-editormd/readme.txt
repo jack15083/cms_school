@@ -1,9 +1,9 @@
 === WP Editor.md ===
 Contributors: 淮城一只猫
 Donate link: https://iiong.com/
-Tags: Editor,Markdown,Markdown Edit,Jetpack,KaTeX,PrismJS
-Requires at least: 4.9.5
-Tested up to: 4.9.5
+Tags: Editor,Markdown,Markdown Edit,Jetpack,KaTeX,PrismJS,Mermaid
+Requires at least: 4.9.6
+Tested up to: 4.9.6
 Stable tag: 4.1
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
@@ -90,31 +90,76 @@ Empty content is the default highlight library, Go to [highlightjs] (https://hig
 
 == Changelog ==
 
-= 5.0.4 =
+= 6.0.2 =
 
- * 添加Prism Tomorrow Night主题风格
- * 更换编辑器语法高亮引擎为Prism
- * 修复debugger警告提示问题
- * 添加KaTeX兼容选项
+* 修复mindMap已知bug
+* 修复KaTeX公式已知bug
+* 其它代码改善
+
+= 6.0.1 =
+
+* fix the prismjs bug
+
+= 6.0.0 =
+
+Oh,Sorry, the version of WP Editor.md 6.0 replaces the flowchart and timing diagram features, using the more powerful [Mermaid.js](https://mermaidjs.github.io) tool. Thank you for using WP Editor.md and have a good time!
+
+6.X版本已经废弃原有的时序图和流程图，启用更加强大的[Mermaid](https://mermaidjs.github.io)绘图工具。有原来的需求请不要升级！
+
+* Support Mermaid(FlowChart,SequenceDiagram and GantDiagrams)
+* 新的绘图工具(支持流程图，时序图和甘特图)
+* 一些问题的修复
+
+= 5.0.8 =
+* 修复编辑器在特列的情况下，出现关闭按钮的情况
+* 修复编辑器在全屏下被其它样式遮住
+* 添加Mind Map(思维导图)支持
+* 修复触屏屏幕的支持
+Use MindMap（思维导图使用方法）：
+\`\`\`mind
+    -editor插件开发
+         -思维导字
+         -构思如何开发 3m
+         -查看新插件的提交代码修改量
+         -查看修改文件列表
+           -比对单个文件主要修改位置
+           -插件开发格式要求
+         -测试 6m
+\`\`\`
+
+= 5.0.7 =
+* 添加Prism自定义风格选项
+* 添加代码语言
+* 修复前端调用自带编辑器引起的问题（类似投稿功能）
+
+= 5.0.6 =
+* fix prismjs bugs
+
+= 5.0.5 =
+* 优化Prism自动加载模式（大幅度提升性能）
+* 解决一些加载问题
+
+= 5.0.4 =
+* 添加Prism Tomorrow Night主题风格
+* 更换编辑器语法高亮引擎为Prism
+* 修复debugger警告提示问题
+* 添加KaTeX兼容选项
 
 = 5.0.3 =
-
- * 修复单独加载KaTeX失效的问题 | Fix KaTeX will fail in some cases
- * 修复暗色系主题标题看不清的问题 | Fix dark theme title is invisible
- * 添加兼容模式（如果前端页面不正常请启用该选项） | Add compatibility mode
- * 添加调试信息 | Add debug information
- * 完善一些翻译 | Improve some translations
+* 修复单独加载KaTeX失效的问题 | Fix KaTeX will fail in some cases
+* 修复暗色系主题标题看不清的问题 | Fix dark theme title is invisible
+* 添加兼容模式（如果前端页面不正常请启用该选项） | Add compatibility mode
+* 添加调试信息 | Add debug information
+* 完善一些翻译 | Improve some translations
 
 = 5.0.2 =
-
- * 优化公式展示(KaTeX：displayMode) | Optimize KaTeX display(KaTeX：displayMode)
- * 添加JSDelivr CDN | add JSDelivr CDN
- * 添加[~~md~~]语法支持 | Add [~~md~~] syntax support
- * 添加图像粘贴（还有些小问题，类似web图像复制和QQ的截图正常使用，像在桌面粘贴图像会失效） | Add Image Paste (still some minor issues, similar to web image copying normally used, like pasting images on the desktop will fail)
- * 完善一些翻译 | Improve some translations
+* 优化公式展示(KaTeX：displayMode) | Optimize KaTeX display(KaTeX：displayMode)
+* 添加JSDelivr CDN | add JSDelivr CDN
+* 添加[~~md~~]语法支持 | Add [~~md~~] syntax support
+* 添加图像粘贴（还有些小问题，类似web图像复制和QQ的截图正常使用，像在桌面粘贴图像会失效） | Add Image Paste (still some minor issues, similar to web image copying normally used, like pasting images on the desktop will fail)
+* 完善一些翻译 | Improve some translations
 
 = 5.0.1 =
-
 * emergency repair of important bugs
 
 = 5.0 =

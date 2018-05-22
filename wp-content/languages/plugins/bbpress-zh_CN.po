@@ -2,17 +2,14 @@
 # This file is distributed under the same license as the Plugins - bbPress - Stable (latest release) package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2017-12-08 15:22+0800\n"
+"PO-Revision-Date: 2017-12-17 00:26:21+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Poedit 1.8.11\n"
+"X-Generator: GlotPress/2.4.0-alpha\n"
 "Language: zh_CN\n"
 "Project-Id-Version: Plugins - bbPress - Stable (latest release)\n"
-"POT-Creation-Date: \n"
-"Last-Translator: 薇晓朵 <admin@weixiaoduo.com>\n"
-"Language-Team: \n"
 
 #. translators: user role
 #: includes/common/locale.php:56
@@ -56,7 +53,9 @@ msgstr "bbPress"
 msgid "bbPress is forum software with a twist from the creators of WordPress."
 msgstr "bbPress 是一款由 WordPress 的创建者开发的论坛软件。"
 
+#. #-#-#-#-#  bbpress-code.pot (bbPress 2.5.13)  #-#-#-#-#
 #. Plugin URI of the plugin/theme
+#. #-#-#-#-#  bbpress-code.pot (bbPress 2.5.13)  #-#-#-#-#
 #. Author URI of the plugin/theme
 msgid "https://bbpress.org"
 msgstr "https://bbpress.org"
@@ -647,7 +646,7 @@ msgstr "保护"
 
 #: templates/default/bbpress/form-forum.php:169
 msgid "You must be logged in to create new forums."
-msgstr "您需要先登录才可以创建新话题。"
+msgstr "您需要先登录才可以创建新主题。"
 
 #: templates/default/bbpress/form-forum.php:169
 msgid "You cannot create new forums."
@@ -655,7 +654,7 @@ msgstr "您无法新建论坛。"
 
 #: templates/default/bbpress/form-forum.php:161
 msgid "The forum &#8216;%s&#8217; is closed to new content."
-msgstr "版块 &#8216;%s&#8217; 已关闭，不允许发布新话题和回复。"
+msgstr "版块 &#8216;%s&#8217; 已关闭，不允许发布新主题和回复。"
 
 #: templates/default/bbpress/form-forum.php:138
 #: templates/default/bbpress/form-reply-move.php:72
@@ -696,7 +695,7 @@ msgstr "该论坛封闭了新的内容，但您的帐号仍然允许您这样做
 
 #: templates/default/bbpress/form-forum.php:37
 msgid "Create New Forum in &ldquo;%s&rdquo;"
-msgstr "在 &ldquo;%s&rdquo; 中创建新话题"
+msgstr "在 &ldquo;%s&rdquo; 中创建新主题"
 
 #: templates/default/bbpress/form-forum.php:35
 #: templates/default/bbpress/form-topic.php:41
@@ -899,7 +898,7 @@ msgstr "该话题没有回复。"
 
 #: includes/topics/template.php:3316
 msgid "This topic contains %1$s and has %2$s."
-msgstr "该话题包含 %1$s 和 %2$s 。"
+msgstr "该主题包含 %1$s 和 %2$s 。"
 
 #: includes/topics/template.php:3312
 msgid "This topic contains %1$s, has %2$s, and was last updated by %3$s %4$s."
@@ -921,7 +920,7 @@ msgstr "该话题已被标记为垃圾帖。"
 #: includes/topics/template.php:2981
 msgid "Viewing topic %2$s (of %4$s total)"
 msgid_plural "Viewing %1$s topics - %2$s through %3$s (of %4$s total)"
-msgstr[0] "正在查看 %1$s 话题： %2$s-%3$s (共 %4$s 个话题)"
+msgstr[0] "正在查看 %1$s 主题： %2$s-%3$s (共 %4$s 个主题)"
 
 #: includes/topics/template.php:2977
 msgid "Viewing %1$s topic"
@@ -1130,7 +1129,7 @@ msgstr "<strong>错误</strong>：您无权编辑该目标话题。"
 
 #: includes/topics/functions.php:1178
 msgid "<strong>ERROR</strong>: The topic you want to merge to was not found."
-msgstr "<strong>错误</strong>： 找不到您想要合并的话题。"
+msgstr "<strong>错误</strong>： 找不到您想要合并的主题。"
 
 #: includes/topics/functions.php:1172
 msgid "<strong>ERROR</strong>: Destination topic ID not found."
@@ -1958,7 +1957,7 @@ msgstr "父级版块 ID："
 
 #: includes/common/widgets.php:515
 msgid "(bbPress) Forums List"
-msgstr "(bbPress) 论坛版块列表"
+msgstr "(bbPress) 论坛板块列表"
 
 #: includes/common/widgets.php:512
 msgid "A list of forums with an option to set the parent."
@@ -2204,7 +2203,7 @@ msgstr ""
 "\n"
 "您收到该邮件是因为您订阅了该论坛的一个话题。\n"
 "\n"
-"您可以登录并访问该话题来取消订阅该邮件上。"
+"您可以登录并访问该主题来取消订阅该邮件上。"
 
 #: includes/common/functions.php:628
 msgid "<strong>ERROR</strong>: Invalid email address submitted!"
@@ -2356,7 +2355,7 @@ msgstr "取消该话题垃圾帖标记"
 
 #: includes/admin/topics.php:800 includes/topics/template.php:2747
 msgid "(to front)"
-msgstr "(置顶)"
+msgstr "（向前）"
 
 #: includes/admin/topics.php:800
 msgid "Stick this topic to front"
@@ -2403,7 +2402,7 @@ msgstr "没有回复"
 #: includes/admin/topics.php:694 includes/extend/buddypress/groups.php:295
 #: templates/default/bbpress/form-topic.php:117
 msgid "(No Forum)"
-msgstr "（没有版块）"
+msgstr "（没有板块）"
 
 #: includes/admin/topics.php:635 templates/default/bbpress/loop-topics.php:20
 msgid "Voices"
@@ -2471,11 +2470,11 @@ msgstr "未找到该话题。"
 
 #: includes/admin/topics.php:223
 msgid "<strong>Topic Type</strong> dropdown indicates the sticky status of the topic. Selecting the super sticky option would stick the topic to the front of your forums, i.e. the topic index, sticky option would stick the topic to its respective forum. Selecting normal would not stick the topic anywhere."
-msgstr "<strong>话题类型</strong>下拉菜单指示话题的置顶状态。选择超级置顶可置顶话题到论坛的首页，即话题索引，置顶选择可置顶话题到各自的版块。选择普通将不会置顶话题到任何地方。"
+msgstr "<strong>话题类型</strong>下拉菜单指示话题的置顶状态。选择超级置顶可置顶话题到论坛的首页，即主题索引，置顶选择可置顶主题到各自的版块。选择普通将不会置顶话题到任何地方。"
 
 #: includes/admin/topics.php:222
 msgid "<strong>Forum</strong> dropdown determines the parent forum that the topic belongs to. Select the forum or category from the dropdown, or leave the default (No Forum) to post the topic without an assigned forum."
-msgstr "<strong>论坛</strong>下拉式表单表示话题所属的上层讨论。下拉式表单选择的讨论或分类，或保留不指定讨论的预设（无讨论）帖子的标题。"
+msgstr "<strong>论坛</strong>下拉式表单表示主题所属的上层讨论。下拉式表单选择的讨论或分类，或保留不指定讨论的预设（无讨论）帖子的标题。"
 
 #: includes/admin/topics.php:220
 msgid "Select the attributes that your topic should have:"
@@ -2495,7 +2494,7 @@ msgstr "<strong>发布</strong>-您可以在发布框设置你的发布条件。
 
 #: includes/admin/topics.php:207
 msgid "<strong>Topic Editor</strong> - Enter the text for your topic. There are two modes of editing: Visual and HTML. Choose the mode by clicking on the appropriate tab. Visual mode gives you a WYSIWYG editor. Click the last icon in the row to get a second row of controls. The HTML mode allows you to enter raw HTML along with your topic text. You can insert media files by clicking the icons above the topic editor and following the directions. You can go to the distraction-free writing screen via the Fullscreen icon in Visual mode (second to last in the top row) or the Fullscreen button in HTML mode (last in the row). Once there, you can make buttons visible by hovering over the top area. Exit Fullscreen back to the regular topic editor."
-msgstr "<strong>话题编辑</strong> - 输入话题文本。有两种编辑模式：可视化与HTML，通过点击标签选择模式，可视化模式带来所见即所得的方案。HTML模式，允许您输入HTML代码到话题文本里。您可以通过点击上面的话题编辑器的图标插入媒体文件。您可以通过全屏的图标进入自由编写屏幕。全屏时，在上方可见区域有菜单按钮，退出全屏回到正规的话题编辑器。"
+msgstr "<strong>话题编辑</strong> - 输入话题文本。有两种编辑模式：可视化与HTML，通过点击标签选择模式，可视化模式带来所见即所得的方案。HTML模式，允许您输入HTML代码到主题文本里。您可以通过点击上面的主题编辑器的图标插入媒体文件。您可以通过全屏的图标进入自由编写屏幕。全屏时，在上方可见区域有菜单按钮，退出全屏回到正规的话题编辑器。"
 
 #: includes/admin/topics.php:206
 msgid "<strong>Title</strong> - Enter a title for your topic. After you enter a title, you&#8217;ll see the permalink below, which you can edit."
@@ -2547,7 +2546,7 @@ msgstr "<strong>编辑</strong> 转到该话题的编辑页面。您也可以通
 
 #: includes/admin/topics.php:155
 msgid "Hovering over a row in the topics list will display action links that allow you to manage your topic. You can perform the following actions:"
-msgstr "悬停在话题列表的某行时，将会显示出一些话题管理链接。您可以执行以下操作："
+msgstr "悬停在话题列表的某行时，将会显示出一些主题管理链接。您可以执行以下操作："
 
 #: includes/admin/topics.php:146
 msgid "You can refine the list to show only topics from a specific month by using the dropdown menus above the topics list. Click the Filter button after making your selection. You also can refine the list by clicking on the topic creator in the topics list."
@@ -2770,7 +2769,7 @@ msgstr "正在统计每个话题的垃圾&已删除的回复帖数&hellip; %s"
 
 #: includes/admin/tools.php:249
 msgid "Counting the number of voices in each topic&hellip; %s"
-msgstr "正在计算每个话题中的参与人数&hellip; %s"
+msgstr "正在计算每个主题中的参与人数&hellip; %s"
 
 #: includes/admin/tools.php:233 includes/admin/tools.php:276
 #: includes/admin/tools.php:302 includes/admin/tools.php:469
@@ -2797,7 +2796,7 @@ msgstr "失败！"
 
 #: includes/admin/tools.php:198
 msgid "Counting the number of replies in each topic&hellip; %s"
-msgstr "正在计算每个话题的回复&hellip; %s"
+msgstr "正在计算每个主题的回复&hellip; %s"
 
 #: includes/admin/tools.php:178
 msgid "Remap existing users to default forum roles"
@@ -2977,7 +2976,7 @@ msgstr "别名"
 
 #: includes/admin/settings.php:1580
 msgid "These are broken up into two separate groups: one for what appears in your theme, another for RSS feeds."
-msgstr "这些会被分成两个不同的群组：一个出现在你的话题上，另一个在  RSS 定阅。"
+msgstr "这些会被分成两个不同的群组：一个出现在你的主题上，另一个在  RSS 定阅。"
 
 #: includes/admin/settings.php:1579
 msgid "This is comparable to the WordPress \"Reading Settings\" page, where you can set the number of posts that should show on blog pages and in feeds."
@@ -3001,7 +3000,7 @@ msgstr "自动嵌入会通过地址嵌入媒体内容到回复里。例如：You
 
 #: includes/admin/settings.php:1567
 msgid "The Fancy Editor brings the luxury of the Visual editor and HTML editor from the traditional WordPress dashboard into your theme."
-msgstr "带来可视化编辑器和HTML编辑器，从传统的WordPress后台，到你的话题。"
+msgstr "带来可视化编辑器和HTML编辑器，从传统的WordPress后台，到你的主题。"
 
 #: includes/admin/settings.php:1566
 msgid "\"Anonymous Posting\" allows guest users who do not have accounts on your site to both create topics as well as replies."
@@ -3166,7 +3165,7 @@ msgstr "论坛整合 BuddyPress 设置"
 
 #: includes/admin/settings.php:1043
 msgid "Custom slugs for single forums, topics, replies, tags, views, and search."
-msgstr "为单论坛，话题，回复，标签，视图和搜索配置别名"
+msgstr "为单论坛，主题，回复，标签，视图和搜索配置别名"
 
 #: includes/admin/settings.php:943
 msgid "Customize your user profile slugs."
@@ -3219,7 +3218,7 @@ msgstr "%1$s - %2$s"
 
 #: includes/admin/settings.php:698
 msgid "How your forum content is displayed within your existing theme."
-msgstr "您的论坛内容在已有话题中如何显示。"
+msgstr "您的论坛内容在已有主题中如何显示。"
 
 #: includes/admin/settings.php:685
 msgid "Add toolbar & buttons to textareas to help with HTML formatting"
@@ -3297,13 +3296,13 @@ msgstr "收藏的话题"
 #: includes/extend/buddypress/loader.php:277
 #: templates/default/bbpress/user-details.php:41
 msgid "Replies Created"
-msgstr "已发表的回复"
+msgstr "回复已发表"
 
 #: includes/admin/settings.php:354 includes/extend/buddypress/loader.php:196
 #: includes/extend/buddypress/loader.php:269
 #: templates/default/bbpress/user-details.php:35
 msgid "Topics Started"
-msgstr "已发表的话题"
+msgstr "被标记的话题"
 
 #: includes/admin/settings.php:346
 msgid "User Base"
@@ -3411,7 +3410,7 @@ msgstr "每页话题与回复数"
 
 #: includes/admin/settings.php:34
 msgid "Forum Theme Packages"
-msgstr "论坛话题包"
+msgstr "论坛主题包"
 
 #: includes/admin/settings.php:29
 msgid "Forum Features"
@@ -3523,7 +3522,7 @@ msgstr "（不匹配）"
 #: includes/admin/replies.php:651 includes/admin/replies.php:666
 #: includes/admin/topics.php:687
 msgid "No Forum"
-msgstr "为版块"
+msgstr "为板块"
 
 #: includes/admin/replies.php:625 includes/admin/replies.php:633
 msgid "No Topic"
@@ -3592,7 +3591,7 @@ msgstr "回复属性"
 
 #: includes/admin/replies.php:212
 msgid "<strong>Featured Image</strong> - This allows you to associate an image with your reply without inserting it. This is usually useful only if your theme makes use of the featured image as a reply thumbnail on the home page, a custom header, etc."
-msgstr "<strong>特色图片</strong> - 允许给你的回复关联一张图片。当你的话题支持特色图像，将会在首页显示话题的缩略图，如自定义标题。"
+msgstr "<strong>特色图片</strong> - 允许给你的回复关联一张图片。当你的主题支持特色图像，将会在首页显示主题的缩略图，如自定义标题。"
 
 #: includes/admin/replies.php:209
 msgid "<strong>Publish</strong> - You can set the terms of publishing your reply in the Publish box. For Status, Visibility, and Publish (immediately), click on the Edit link to reveal more options. Visibility includes options for password-protecting a reply or making it stay at the top of your blog indefinitely (sticky). Publish (immediately) allows you to set a future or past date and time, so you can schedule a reply to be published in the future or backdate a reply."
@@ -3652,7 +3651,7 @@ msgstr "您可以仅列出回复的标题列表，或者其中包含摘要内容
 
 #: includes/admin/replies.php:145
 msgid "You can filter the list of replies by reply status using the text links in the upper left to show All, Published, Draft, or Trashed replies. The default view is to show all replies."
-msgstr "您可以在上方左侧的地方，根据话题的状态对回复进行筛选。包括：全部回复、已发布、待审核、草稿或回收站回复等。默认将显示全部回复。"
+msgstr "您可以在上方左侧的地方，根据主题的状态对回复进行筛选。包括：全部回复、已发布、待审核、草稿或回收站回复等。默认将显示全部回复。"
 
 #: includes/admin/replies.php:144
 msgid "You can hide/display columns based on your needs and decide how many replies to list per screen using the Screen Options tab."
@@ -3798,7 +3797,7 @@ msgstr[0] "用户"
 
 #: includes/admin/metaboxes.php:127
 msgid "Users &amp; Moderation"
-msgstr "用户 &amp; 版主"
+msgstr "用户 &amp; 审刻"
 
 #: includes/admin/metaboxes.php:103 includes/admin/settings.php:309
 #: includes/topics/template.php:3367
@@ -3821,7 +3820,7 @@ msgstr[0] "回复"
 #: templates/default/bbpress/loop-topics.php:19
 msgid "Topic"
 msgid_plural "Topics"
-msgstr[0] "话题"
+msgstr[0] "主题"
 
 #: includes/admin/metaboxes.php:42
 msgid "Discussion"
@@ -3874,7 +3873,7 @@ msgstr "自定义字段已更新。"
 
 #: includes/admin/forums.php:529
 msgid "Forum updated. <a href=\"%s\">View forum</a>"
-msgstr "版块已更新。<a href=\"%s\">查看版块</a>"
+msgstr "板块已更新。<a href=\"%s\">查看板块</a>"
 
 #: includes/admin/forums.php:463 includes/forums/template.php:601
 msgid "No Topics"
@@ -3965,7 +3964,7 @@ msgstr "论坛设置"
 
 #: includes/admin/forums.php:198
 msgid "<strong>Featured Image</strong> - This allows you to associate an image with your forum without inserting it. This is usually useful only if your theme makes use of the featured image as a forum thumbnail on the home page, a custom header, etc."
-msgstr "<strong>特色图像</strong> - 允许给你的版块关联一张图像。当你的话题支持特色图像，将会在首页显示话题的别图，如自定义标题。"
+msgstr "<strong>特色图像</strong> - 允许给你的版块关联一张图像。当你的主题支持特色图像，将会在首页显示主题的别图，如自定义标题。"
 
 #: includes/admin/forums.php:195
 msgid "<strong>Publish</strong> - You can set the terms of publishing your forum in the Publish box. For Status, Visibility, and Publish (immediately), click on the Edit link to reveal more options. Visibility includes options for password-protecting a forum or making it stay at the top of your blog indefinitely (sticky). Publish (immediately) allows you to set a future or past date and time, so you can schedule a forum to be published in the future or backdate a forum."
@@ -4053,7 +4052,7 @@ msgstr "你可以使用论坛上方的下拉菜单细化该列表，只显示具
 
 #: includes/admin/forums.php:134
 msgid "You can filter the list of forums by forum status using the text links in the upper left to show All, Published, or Trashed forums. The default view is to show all forums."
-msgstr "您可以在上方左侧的地方，根据话题的状态对回复进行筛选。包括：全部回复、已发布、待审核、草稿或回收站回复等。默认将显示全部回复。"
+msgstr "您可以在上方左侧的地方，根据主题的状态对回复进行筛选。包括：全部回复、已发布、待审核、草稿或回收站回复等。默认将显示全部回复。"
 
 #: includes/admin/forums.php:133
 msgid "You can hide/display columns based on your needs and decide how many forums to list per screen using the Screen Options tab."
@@ -4292,7 +4291,7 @@ msgstr "错误检测"
 
 #: includes/admin/admin.php:815
 msgid "Theme Compatibility"
-msgstr "话题兼容性"
+msgstr "主题兼容性"
 
 #: includes/admin/admin.php:257 includes/admin/admin.php:258
 #: includes/admin/admin.php:266 includes/admin/admin.php:267
@@ -4325,7 +4324,7 @@ msgstr "关于"
 
 #: includes/admin/admin.php:865
 msgid "bbPress is created by a worldwide swarm of busy, busy bees."
-msgstr "bbPress 是由全世界的辛勤小蜜蜂创造的。"
+msgstr "bbPress 是有全世界的辛勤小蜜蜂创造的。"
 
 #: includes/admin/admin.php:867
 msgid "Project Leaders"
@@ -4378,7 +4377,7 @@ msgstr[0] "已关闭 <span class=\"count\">(%s)</span>"
 
 #: bbpress.php:133 bbpress.php:140
 msgid "Cheatin&#8217; huh?"
-msgstr "你在逗我&#8217; 嗯哼?"
+msgstr "开玩笑，呵？"
 
 #: bbpress.php:535
 msgid "bbPress Replies"

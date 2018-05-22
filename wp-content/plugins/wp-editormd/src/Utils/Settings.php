@@ -75,12 +75,12 @@ class Settings {
 				'title' => __( 'KaTeX Settings', $this->text_domain )
 			),
 			array(
-				'id'    => 'editor_flow',
-				'title' => __( 'FlowDiagram Settings', $this->text_domain )
+				'id'    => 'editor_mermaid',
+				'title' => __( 'Mermaid Settings', $this->text_domain )
 			),
 			array(
-				'id'    => 'editor_sequence',
-				'title' => __( 'Sequence Settings', $this->text_domain )
+				'id'    => 'editor_mindmap',
+				'title' => __( 'MindMap Settings', $this->text_domain )
 			),
 			array(
 				'id'    => 'editor_advanced',
@@ -101,6 +101,12 @@ class Settings {
 			'editor_basics'       => array(
 				array(
 					'name'  => 'support_comment',
+					'label' => __( 'Use Markdown For Posts And Pages', $this->text_domain ),
+					'desc'  => '<a href="' . admin_url( "options-writing.php" ) . '" target="_blank">' . __( 'Go', $this->text_domain ) . '</a>',
+					'type'  => 'html'
+				),
+				array(
+					'name'  => 'support_post_page',
 					'label' => __( 'Use Markdown For Comments', $this->text_domain ),
 					'desc'  => '<a href="' . admin_url( "options-discussion.php#wpcom_publish_comments_with_markdown" ) . '" target="_blank">' . __( 'Go', $this->text_domain ) . '</a>',
 					'type'  => 'html'
@@ -143,7 +149,7 @@ class Settings {
 				array(
 					'name'    => 'static_cdn',
 					'label'   => __( 'Static File CDN', $this->text_domain ),
-					'desc'    => __( 'Store static files in CDN to increase website speed,<br/>Files List:jQuery,KaTeX,Raphael,FlowChart,Underscore,Sequence,Emoji', $this->text_domain ),
+					'desc'    => __( 'Store static files in CDN to increase website speed,<br/>Files List:jQuery,KaTeX,Mermaid,Emoji', $this->text_domain ),
 					'type'    => 'radio',
 					'options' => array(
 						'//cdn.jsdelivr.net'               => __( 'Recommended Use', $this->text_domain ) . ' JSDelivr',
@@ -251,16 +257,16 @@ class Settings {
 					'type'    => 'checkbox',
 					'default' => 'off'
 				),
-//				array(
-//					'name'    => 'line_highlight',
-//					'label'   => __( 'Line highlight', $this->text_domain ),
-//					'desc'    => __( '', $this->text_domain ),
-//					'type'    => 'checkbox',
-//					'default' => 'off'
-//				),
 				array(
 					'name'    => 'line_numbers',
 					'label'   => __( 'Line Numbers', $this->text_domain ),
+					'desc'    => __( '', $this->text_domain ),
+					'type'    => 'checkbox',
+					'default' => 'off'
+				),
+				array(
+					'name'    => 'show_language',
+					'label'   => __( 'Show Language', $this->text_domain ),
 					'desc'    => __( '', $this->text_domain ),
 					'type'    => 'checkbox',
 					'default' => 'off'
@@ -279,9 +285,18 @@ class Settings {
 						'coy'            => 'Coy',
 						'solarizedlight' => 'Solarized Light',
 						'tomorrow'       => 'Tomorrow Night',
+						'customize'       => __( 'Customize Style', $this->text_domain ),
 					),
 					'default' => 'default'
 				),
+				array(
+					'name'    => 'customize_my_style',
+					'label'   => __( 'Customize Style Library', $this->text_domain ),
+					'desc'    => __( 'Get More <a href="https://github.com/JaxsonWang/Prism.js-Style" target="_blank" rel="nofollow">Theme Style</a>', $this->text_domain ),
+					'type'    => 'text',
+					'default' => 'notiong'
+				),
+
 				array(
 					'name'  => 'highlight_customize_tip',
 					'label' => __( 'Load Mode', $this->text_domain ),
@@ -343,35 +358,30 @@ class Settings {
 					'default' => 'off'
 				)
 			),
-			'editor_flow'         => array(
+			'editor_mermaid'      => array(
 				array(
-					'name'    => 'support_flowchart',
-					'label'   => __( 'Support FlowChart', $this->text_domain ),
-					'desc'    => __( '', $this->text_domain ),
+					'name'    => 'support_mermaid',
+					'label'   => __( 'Support Mermaid', $this->text_domain ),
+					'desc'    => __( 'Support FlowChart,SequenceDiagram and GantDiagrams', $this->text_domain ),
 					'type'    => 'checkbox',
 					'default' => 'off'
 				)
-			),
-			'editor_sequence'     => array(
+            ),
+			'editor_mindmap'      => array(
 				array(
-					'name'    => 'support_sequence',
-					'label'   => __( 'Support Sequence', $this->text_domain ),
+					'name'    => 'support_mindmap',
+					'label'   => __( 'Support MindMap', $this->text_domain ),
 					'desc'    => __( '', $this->text_domain ),
 					'type'    => 'checkbox',
 					'default' => 'off'
 				),
 				array(
-					'name'    => 'sequence_style',
-					'label'   => __( 'Sequence Style', $this->text_domain ),
-					'desc'    => __( 'Change the sequence style', $this->text_domain ),
-					'type'    => 'select',
-					'options' => array(
-						'simple' => 'simple',
-						'hand'   => 'hand'
-					),
-					'default' => 'simple'
-				)
-			),
+					'name'    => 'customize_mindmap',
+					'label'   => __( 'Customize MindMap Library', $this->text_domain ),
+					'type'    => 'text',
+					'default' => WP_EDITORMD_URL . '/assets/Editormd/lib/mindMap.min.js'
+				),
+            ),
 			'editor_advanced'     => array(
 				array(
 					'name'    => 'jquery_compatible',
@@ -390,7 +400,7 @@ class Settings {
 				array(
 					'name'  => 'debugger',
 					'label' => __( 'Debugger', $this->text_domain ),
-					'desc'  => '<a id="debugger" href="#">' . __( 'Info', $this->text_domain ) . '</a>'. Debugger::editormd_debug($this->text_domain),
+					'desc'  => '<a id="debugger" href="#">' . __( 'Info', $this->text_domain ) . '</a>',
 					'type'  => 'html'
 				),
 			),
@@ -404,6 +414,26 @@ class Settings {
 
 		$this->settings_api->show_navigation();
 		$this->settings_api->show_forms();
+
+		echo Debugger::editormd_debug( $this->text_domain );
+
+
+		//判断地区，根据不同的地区进入不同的文档
+		switch (get_bloginfo( 'language' )) {
+			case 'zh-CN':
+				$donateImgUrl = '//gitee.com/JaxsonWang/JaxsonWang/raw/master/mydonate';
+				break;
+			default :
+				$donateImgUrl = '//github.com/JaxsonWang/WP-Editor.md/raw/docs/screenshots';
+		}
+
+		echo '<div id="donate">';
+		echo '<h3>' . __('Donate', $this->text_domain) . '</h3>';
+		echo '<p style="width: 50%">' . __('It is hard to continue development and support for this plugin without contributions from users like you. If you enjoy using WP-Editor.md and find it useful, please consider making a donation. Your donation will help encourage and support the plugin’s continued development and better user support.Thank You!', $this->text_domain) . '</p>';
+		echo '<p style="display: table;"><strong style="display: table-cell;vertical-align: middle;">Alipay(支付宝)：</strong><a rel="nofollow" target="_blank" href="'. $donateImgUrl .'/alipay.jpg"><img width="100" src="'. $donateImgUrl .'/alipay.jpg"/></a></p>';
+		echo '<p style="display: table;"><strong style="display: table-cell;vertical-align: middle;">WeChat(微信)：</strong><a rel="nofollow" target="_blank" href="'. $donateImgUrl .'/wechart.jpg"><img width="100" src="'. $donateImgUrl .'/wechart.jpg"/></a></p>';
+		echo '<p style="display: table;"><strong style="display: table-cell;vertical-align: middle;">PayPal(贝宝)：</strong><a rel="nofollow" target="_blank" href="https://www.paypal.me/JaxsonWang">https://www.paypal.me/JaxsonWang</a></p>';
+		echo '</div>';
 
 		echo '</div>';
 		$this->script_style();
@@ -446,10 +476,14 @@ class Settings {
                     document.getElementById('wpuf-syntax_highlighting[highlight_mode_auto]').setAttribute('disabled', 'disabled');
                     document.getElementById('wpuf-syntax_highlighting[line_numbers]').setAttribute('disabled', 'disabled');
                     document.getElementById('syntax_highlighting[highlight_library_style]').setAttribute('disabled', 'disabled');
+                    document.getElementById('syntax_highlighting[customize_my_style]').setAttribute('disabled', 'disabled');
+                    document.getElementById('wpuf-syntax_highlighting[show_language]').setAttribute('disabled', 'disabled');
                 } else {
                     document.getElementById('wpuf-syntax_highlighting[highlight_mode_auto]').removeAttribute('disabled');
                     document.getElementById('wpuf-syntax_highlighting[line_numbers]').removeAttribute('disabled');
                     document.getElementById('syntax_highlighting[highlight_library_style]').removeAttribute('disabled');
+                    document.getElementById('syntax_highlighting[customize_my_style]').removeAttribute('disabled');
+                    document.getElementById('wpuf-syntax_highlighting[show_language]').removeAttribute('disabled');
                 }
                 document.getElementById('wpuf-syntax_highlighting[highlight_mode_auto]').addEventListener('click', function () {
                     if (document.getElementById('wpuf-syntax_highlighting[highlight_mode_auto]').checked === true) {
@@ -470,10 +504,14 @@ class Settings {
                         document.getElementById('wpuf-syntax_highlighting[highlight_mode_auto]').setAttribute('disabled', 'disabled');
                         document.getElementById('wpuf-syntax_highlighting[line_numbers]').setAttribute('disabled', 'disabled');
                         document.getElementById('syntax_highlighting[highlight_library_style]').setAttribute('disabled', 'disabled');
+                        document.getElementById('syntax_highlighting[customize_my_style]').setAttribute('disabled', 'disabled');
+                        document.getElementById('wpuf-syntax_highlighting[show_language]').setAttribute('disabled', 'disabled');
                     } else {
                         document.getElementById('wpuf-syntax_highlighting[highlight_mode_auto]').removeAttribute('disabled');
                         document.getElementById('wpuf-syntax_highlighting[line_numbers]').removeAttribute('disabled');
                         document.getElementById('syntax_highlighting[highlight_library_style]').removeAttribute('disabled');
+                        document.getElementById('syntax_highlighting[customize_my_style]').removeAttribute('disabled');
+                        document.getElementById('wpuf-syntax_highlighting[show_language]').removeAttribute('disabled');
                     }
 
                 });
@@ -483,6 +521,12 @@ class Settings {
                 //切换显示信息
                 $('#debugger').click(function () {
                     $('.debugger-wrap').fadeToggle();
+                    $('#donate').fadeToggle();
+                });
+                //判断非调试界面则隐藏
+                $('a[href!="#editor_advanced"].nav-tab').click(function () {
+                    $('.debugger-wrap').fadeOut();
+                    $('#donate').fadeIn();
                 });
             })(jQuery);
         </script>
