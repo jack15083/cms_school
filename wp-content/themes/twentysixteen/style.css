@@ -411,7 +411,7 @@ h1.ej-bigtit {
 	padding: 2px 5px; border: 1px solid rgb(216, 216, 216); border-image: none; color: rgb(178, 135, 48); font-size: 12px;
 }
 .footer {
-	background: url("images/index_39.png") no-repeat right top rgb(20, 53, 126); margin: 0px auto; width: 100%; min-height: 205px; max-width: 1920px;
+	margin: 0px auto; width: 100%; min-height: 205px; max-width: 1920px;
 }
 .footer-con {
 	margin: auto; width: 1200px;
@@ -542,7 +542,7 @@ h1.ej-bigtit {
 		background: rgb(179, 135, 48);
 	}
 	.footer {
-		background: url("images/index_39.png") no-repeat right top rgb(20, 53, 126); margin: 0px auto; width: 100%; min-height: 205px; max-width: 1920px;
+		 margin: 0px auto; width: 100%; min-height: 205px; max-width: 1920px;
 	}
 	.footer-con {
 		margin: auto; padding: 0px 10px; width: 100%; box-sizing: border-box; -moz-box-sizing: border-box; -webkit-box-sizing: border-box;
@@ -785,7 +785,7 @@ h1.ej-bigtit {
 		float: none;
 	}
 	.footer {
-		background: url("images/index_39.png") no-repeat right top rgb(20, 53, 126); margin: 0px auto; width: 100%; min-height: 360px; max-width: 1920px;
+		 margin: 0px auto; width: 100%; min-height: 360px; max-width: 1920px;
 	}
 	.footer-con {
 		margin: auto; width: 768px; height: auto;
