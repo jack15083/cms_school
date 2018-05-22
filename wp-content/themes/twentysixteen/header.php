@@ -116,16 +116,18 @@ show_admin_bar( false );
 
  ?>
 <!-- 轮播 开始 -->
-<div class="flexslider">
+<div class="flexslider" <?php if(count($matches[1]) == 1) echo 'style="margin:0"'?>>
     <ul class="slides">
         <?php foreach ($matches[1] as $key=>$url) {?>
         <li>
             <a href="<?php echo $url?>" target="_blank">
                 <img src="<?php echo $matches[2][$key]?>"></a>
+            <?php if(!empty($matches[3][$key])) {?>
             <div class="show_text">
                 <h4>
                     <a href="<?php echo $url?>"><?php echo $matches[3][$key]?></a></h4>
             </div>
+            <?php } ?>
         </li>
         <?php }?>
     </ul>
