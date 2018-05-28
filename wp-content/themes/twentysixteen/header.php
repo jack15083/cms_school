@@ -113,7 +113,7 @@ show_admin_bar( false );
  if(is_home()) {
      $content = do_shortcode("[huge_it_slider id='1']");
      preg_match_all('/<a href\="(.*?)".*?>\s+<img\s+id\="huge.*?src\="(.*?)"\s+alt\="(.*?)"\s+.*?\/>/is', $content, $matches);
-
+     if(!empty($matches[1])) {
  ?>
 <!-- 轮播 开始 -->
 <div class="flexslider" <?php if(count($matches[1]) == 1) echo 'style="margin:0"'?>>
@@ -132,11 +132,13 @@ show_admin_bar( false );
         <?php }?>
     </ul>
 </div>
+    <?php }?>
 <!-- 轮播 结束 -->
 <?php } else {
 $content = do_shortcode("[huge_it_slider id='2']");
 preg_match_all('/<a href\="(.*?)".*?>\s+<img\s+id\="huge.*?src\="(.*?)"\s+alt\="(.*?)"\s+.*?\/>/is', $content, $matches);
 preg_match_all('/<div class="huge_it_slideshow_description_text_\d\s+".*?>(.*?)<\/div>/is', $content, $matches1);
+if(!empty($matches[2][0]))  {
      ?>
 <div class="banner" style="background-image: url(<?php echo $matches[2][0]?>)">
     <div class="banner-box">
@@ -147,4 +149,4 @@ preg_match_all('/<div class="huge_it_slideshow_description_text_\d\s+".*?>(.*?)<
     </div>
 
 </div>
-<?php }
+<?php }}
